@@ -44,7 +44,7 @@
     <entry>
       <title><![CDATA[Hello Blog]]></title>
       <url>http://wincber.com/2016/09/02/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to my Blog !今天起开始好好的在这里写一些自己在学习过程中遇到的一些我所认为的重要的东西</p>
+      <content type="html"><![CDATA[<p>Welcome to my Blog !今天起开始好好的在这里写一些自己在学习过程中遇到的一些我所认为的重要的东西<br><a id="more"></a></p>
 <h2 id="为什么要开博客"><a href="#为什么要开博客" class="headerlink" title="为什么要开博客"></a>为什么要开博客</h2><h3 id="激励自己"><a href="#激励自己" class="headerlink" title="激励自己"></a>激励自己</h3><p>虽然在csdn之类的也写了一些自己学习过程中遇到的问题，但我感觉这个要能更加正式，督促自己能更好的写东西，这里也尽量写一些实用的东西，向那些小问题就尽量避免<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Come on</div></pre></td></tr></table></figure></p>
 <h3 id="赶上潮流"><a href="#赶上潮流" class="headerlink" title="赶上潮流"></a>赶上潮流</h3><p>之前就看过很厉害的学长的博客，而最近群里的一些小伙伴也好像都有这方面的意向，我也就赶个热</p>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
