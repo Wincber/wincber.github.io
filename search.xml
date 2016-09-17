@@ -4,6 +4,13 @@
   
     
     <entry>
+      <title><![CDATA[RecycleView+DialogFragment组合]]></title>
+      <url>http://wincber.com/2016/09/17/RecycleView-DialogFragment%E7%BB%84%E5%90%88/</url>
+      <content type="html"><![CDATA[<p>先挖坑，马上填</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[ViewPager 嵌套 ViewPager（ViewPager不能显示，滑动冲突等问题）]]></title>
       <url>http://wincber.com/2016/09/07/ViewPage-%E5%B5%8C%E5%A5%97-ViewPage/</url>
       <content type="html"><![CDATA[<p>这两天才把ViewPager了解学习了一下，也来填一下这个坑（也熟悉一下markdown语法）<br>就不多介绍概念之类的，之说一说我所遇到的坑和给大家的建议</p>
