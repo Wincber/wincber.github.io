@@ -4,6 +4,20 @@
   
     
     <entry>
+      <title><![CDATA[仿微信界面的Demo]]></title>
+      <url>http://wincber.com/2016/09/24/%E4%BB%BF%E5%BE%AE%E4%BF%A1%E7%95%8C%E9%9D%A2%E7%9A%84Demo/</url>
+      <content type="html"><![CDATA[<p>先挖坑</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[菜鸟对ShareSdkd的小小探索]]></title>
+      <url>http://wincber.com/2016/09/24/%E8%8F%9C%E9%B8%9F%E5%AF%B9ShareSdkd%E7%9A%84%E5%B0%8F%E5%B0%8F%E6%8E%A2%E7%B4%A2/</url>
+      <content type="html"><![CDATA[<p>感觉效率太差了，得多点时间看</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[RecycleView+DialogFragment组合]]></title>
       <url>http://wincber.com/2016/09/17/RecycleView-DialogFragment%E7%BB%84%E5%90%88/</url>
       <content type="html"><![CDATA[<p>这两天填了坑，总的来说DialogFragment+RecyclerView如果不加动态的数据处理的话只是了解这俩组合还是很简单的，所以我只是用的使DialogFragment+RecycleView再嵌套一个ViewPager。<br>那我先说说大概的结构和步骤。<br><a id="more"></a><br>首先DialogFragment ，想到练DialogFragment是因为android自带的Dialog，AlertDialog等等放在不同版本，风格和样式会不同，用DialogFragment自定义风格好使自己的app风格如一，DialogFragment+RecyclerView可以用到选择账号，选择地区巴拉巴拉，选择什么东西的地方。<br>所以还是在很多地方有用处的</p>
