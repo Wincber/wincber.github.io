@@ -86,23 +86,20 @@
 
 
 
-<meta name="description" content="前言基本现在什么app都是有个人信息这一栏，有你的头像，有你的其他信息什么的，基本上选择头像的逻辑都是点击头像选择1，拍照 2，从图库中选取所以拍照，照片裁剪基本上是必不可少的，也是在把第一行代码实践一遍的时候发现的问题，并尝试了解决。
-拍照要想知道在你开发的时候最合适的姿势还是要去官网看，也是因为书中的代码有些已经被弃用。先是拍照，第一行代码中的拍照intent是 调用123Intent int">
+<meta name="description" content="前言基本现在什么app都是有个人信息这一栏，有你的头像，有你的其他信息什么的，基本上选择头像的逻辑都是点击头像选择1，拍照 2，从图库中选取所以拍照，照片裁剪基本上是必不可少的，也是在把第一行代码实践一遍的时候发现的问题，并尝试了解决。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="拍照裁剪">
 <meta property="og:url" content="http://wincber.com/2016/10/16/拍照裁剪/index.html">
 <meta property="og:site_name" content="wincber note">
-<meta property="og:description" content="前言基本现在什么app都是有个人信息这一栏，有你的头像，有你的其他信息什么的，基本上选择头像的逻辑都是点击头像选择1，拍照 2，从图库中选取所以拍照，照片裁剪基本上是必不可少的，也是在把第一行代码实践一遍的时候发现的问题，并尝试了解决。
-拍照要想知道在你开发的时候最合适的姿势还是要去官网看，也是因为书中的代码有些已经被弃用。先是拍照，第一行代码中的拍照intent是 调用123Intent int">
+<meta property="og:description" content="前言基本现在什么app都是有个人信息这一栏，有你的头像，有你的其他信息什么的，基本上选择头像的逻辑都是点击头像选择1，拍照 2，从图库中选取所以拍照，照片裁剪基本上是必不可少的，也是在把第一行代码实践一遍的时候发现的问题，并尝试了解决。">
 <meta property="og:image" content="http://oczm2hjoz.bkt.clouddn.com/image/jpgthird_crop_1.jpg">
 <meta property="og:image" content="http://oczm2hjoz.bkt.clouddn.com/image/jpgthird_crop_2.jpg">
 <meta property="og:image" content="http://oczm2hjoz.bkt.clouddn.com/image/jpgsystem_crop_1.jpg">
 <meta property="og:image" content="http://oczm2hjoz.bkt.clouddn.com/image/jpgsystem_crop_2.jpg">
-<meta property="og:updated_time" content="2016-10-16T06:51:26.144Z">
+<meta property="og:updated_time" content="2016-10-16T06:57:33.731Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="拍照裁剪">
-<meta name="twitter:description" content="前言基本现在什么app都是有个人信息这一栏，有你的头像，有你的其他信息什么的，基本上选择头像的逻辑都是点击头像选择1，拍照 2，从图库中选取所以拍照，照片裁剪基本上是必不可少的，也是在把第一行代码实践一遍的时候发现的问题，并尝试了解决。
-拍照要想知道在你开发的时候最合适的姿势还是要去官网看，也是因为书中的代码有些已经被弃用。先是拍照，第一行代码中的拍照intent是 调用123Intent int">
+<meta name="twitter:description" content="前言基本现在什么app都是有个人信息这一栏，有你的头像，有你的其他信息什么的，基本上选择头像的逻辑都是点击头像选择1，拍照 2，从图库中选取所以拍照，照片裁剪基本上是必不可少的，也是在把第一行代码实践一遍的时候发现的问题，并尝试了解决。">
 <meta name="twitter:image" content="http://oczm2hjoz.bkt.clouddn.com/image/jpgthird_crop_1.jpg">
 
 
@@ -330,7 +327,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>基本现在什么app都是有个人信息这一栏，有你的头像，有你的其他信息什么的，基本上选择头像的逻辑都是点击头像选择1，拍照 2，从图库中选取<br>所以拍照，照片裁剪基本上是必不可少的，也是在把第一行代码实践一遍的时候发现的问题，并尝试了解决。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>基本现在什么app都是有个人信息这一栏，有你的头像，有你的其他信息什么的，基本上选择头像的逻辑都是点击头像选择1，拍照 2，从图库中选取<br>所以拍照，照片裁剪基本上是必不可少的，也是在把第一行代码实践一遍的时候发现的问题，并尝试了解决。<br><a id="more"></a></p>
 <h2 id="拍照"><a href="#拍照" class="headerlink" title="拍照"></a>拍照</h2><p>要想知道在你开发的时候最合适的姿势还是要去官网看，也是因为书中的代码有些已经被弃用。<br>先是拍照，第一行代码中的拍照intent是 调用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);</div><div class="line">Intent intent = new Intent(“com.android.media.action.IMAGE_CAPTURE”);</div><div class="line">Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE_SECURE);</div></pre></td></tr></table></figure></p>
 <p>上述三种调用都可以，需要注意的是<strong>com.android开头的是系统内部应用间的action,在Intent构建中加引号</strong></p>
 <p>当然，完整的拍照需要不仅仅是一个intent，还需要用来存储照片的文件，以及用来表示照片的uri。</p>
