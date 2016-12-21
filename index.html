@@ -272,6 +272,130 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/04/android服务器端与客户端Socket通信Demo/" itemprop="url">
+                  android服务器端与客户端Socket通信Demo
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-04T01:13:53+08:00" content="2016-12-04">
+              2016-12-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/04/android服务器端与客户端Socket通信Demo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/android服务器端与客户端Socket通信Demo/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><pre><code>最近计网看到TCP/IP协议，和socket通信，看android的网络编程书上刚开始讲TCP/IP协议，并且讲socket通信，就决定接触一下socket编程，这个涉及到服务器端和客户端两个方面，但是原理是一样的
+&lt;!-- more--&gt;
+</code></pre><h2 id="Socket-通信"><a href="#Socket-通信" class="headerlink" title="Socket 通信"></a>Socket 通信</h2><pre><code>至于TCP/IP协议就不详说了，大家也学过，网上也有很多资料，简单的说，TCP是面向连接的，所以这里用到Socket编程使用socket建立服务器与客户端间的连接
+这个小Demo里做了服务器端和客户端，服务器端是在pc，用SocketServer来搭建，客户端在android上，也是用java的socket来建立
+</code></pre><h2 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h2><pre><code>### 服务器端
+开始时练习的不是在android上，是java上socket通信，简单的一对一的话不用开启线程，要使多个客户端连入的话就需要每次接3受到一个socket连接就开启一个线程来处理这个socket的通信，要想服务器也向客户端发送消息的话就要再开启发送服务器自定义的消息
+不过我这儿就发送你控制台输入的消息了（System.in）。当然这样就不能单独向某个客户端发送自定义消息了，而且为开启多少个客户端介入的子线程，就开启多少个接受System.in的子线程，所以每个客户端都会接收到同样的自定义消息。
+### 客户端
+客户端方面需要开启两个线程，一个线程是用来与服务器进行通信，一个线程用来更新UI（将服务器发来的消息显示在TextView中）。
+大概就是这样。
+</code></pre><h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><pre><code>1.服务器IP地址问题
+这个demo中客户端链接的是局域网中主机的ip，手机要与PC在同一个局域网中，至于如何换成连接公网（不在同一局域网时也可以通信）这个问题比较麻烦，设计点到点通信之类的计算机网络知识，虽说这学期学了计算机网络，但是。。唉不说了
+反正就是连公网的话还需要您自己去查阅资料解决，我也回去研究研究，不过这里就不解决了
+2.发送信息紊乱问题
+（1）多线程的读写：在刚开始时练习时，多个客户端连入，与服务器互发消息会出现乱掉，问题主要出在服务器端，用于读取接入客户端而创建的套接字的socket的BufferedReader以及勇于写入的BufferedWriter都需要定义为局部变量，因为多线程中的socket不同，读取和写入每个都要单独操作，不然就会出现这个线程中读出的显示在另一个线程中发给服务器的InputStream。
+（2）服务器端接受System.in的消息发送给所有客户端，需要开启同样数量的子线程，否则会出现有些客户端接受不到服务器发送的自定义消息
+</code></pre><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code>### 客户端
+
+dash<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">public class ClientThread implements Runnable &#123;</div><div class="line">Handler mHandler;  // 服务器通信 的handler</div><div class="line">public Handler mRevHandler; // 与UI线程通信的handler</div><div class="line">BufferedReader reader;</div><div class="line">BufferedWriter writer;</div><div class="line">Socket mSocket;</div><div class="line">public ClientThread(Handler handler)&#123;</div><div class="line">    mHandler = handler;</div><div class="line">&#125;</div><div class="line">@Override</div><div class="line">public void run() &#123;</div><div class="line">    try&#123;</div><div class="line">        mSocket = new Socket();</div><div class="line">        mSocket.connect(new InetSocketAddress(&quot;192.168.191.1&quot;,23333),60000);</div><div class="line">        Log.d(&quot;socket connecting&quot;,&quot;connecting ...&quot;);</div><div class="line">        reader = new BufferedReader(new InputStreamReader(mSocket.getInputStream()));</div><div class="line">        writer = new BufferedWriter(new OutputStreamWriter(mSocket.getOutputStream()));</div><div class="line">        new Thread(new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">                String content = null;</div><div class="line">                try &#123;</div><div class="line">                    while((content = reader.readLine() )!= null )&#123;</div><div class="line">                        Message msg = new Message();</div><div class="line">                        Message msg2 = new Message();</div><div class="line">                        msg.what = 0x66;</div><div class="line">                        msg2.what = 0x22;</div><div class="line">                        msg.obj = content ;</div><div class="line">                        msg2.obj = mSocket.hashCode();</div><div class="line">                        mHandler.sendMessage(msg);</div><div class="line">                        mHandler.sendMessage(msg2);</div><div class="line">                        Log.d(&quot;Received message:&quot; ,content);</div><div class="line">                    &#125;</div><div class="line">                &#125; catch (IOException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line">        Looper.prepare();</div><div class="line">        mRevHandler = new Handler()&#123;</div><div class="line">            @Override</div><div class="line">            public void handleMessage(Message msg) &#123;</div><div class="line">                super.handleMessage(msg);</div><div class="line">                if(msg.what == 0x11)&#123;</div><div class="line">                    try &#123;</div><div class="line">                        writer.write(msg.obj.toString()+&quot; from &quot;+ mSocket.hashCode()+&quot;\n&quot;);</div><div class="line">                        writer.flush();</div><div class="line">                    &#125; catch (IOException e) &#123;</div><div class="line">                        e.printStackTrace();</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        Looper.loop();</div><div class="line">    &#125;catch(IOException e)&#123;</div><div class="line">        e.printStackTrace();</div><div class="line">    &#125;finally &#123;</div><div class="line">        try &#123;</div><div class="line">            reader.close();</div><div class="line">            writer.close();</div><div class="line">            mSocket.close();</div><div class="line">        &#125; catch (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+### 服务器端
+dash<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line">    public class MySocketServer &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        MySocketServer socketServer = new MySocketServer();</div><div class="line">        socketServer.startServer();</div><div class="line">    &#125;</div><div class="line">    public void startServer() &#123;</div><div class="line">        ServerSocket serverSocket = null;</div><div class="line">        Socket socket = null;</div><div class="line">        try &#123;</div><div class="line">            String ip;</div><div class="line">            InetAddress adr = InetAddress.getLocalHost();</div><div class="line">            ip = adr.getHostAddress();</div><div class="line">            System.out.println(ip);</div><div class="line">            serverSocket = new ServerSocket(23333);</div><div class="line">            System.out.println(&quot;server start&gt;&gt;&quot;);</div><div class="line">            while(true)&#123;</div><div class="line">                socket = serverSocket.accept();</div><div class="line">                setServerInput(socket);</div><div class="line">                manageConnection(socket);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; catch (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;finally &#123;</div><div class="line">            try &#123;</div><div class="line">                serverSocket.close();</div><div class="line">            &#125; catch (Exception e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    public void setServerInput(final Socket socket)&#123;</div><div class="line">        new Thread(new Runnable() &#123;</div><div class="line">            BufferedReader input = null;</div><div class="line">            BufferedWriter writer = null;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">                try &#123;</div><div class="line">                    input = new BufferedReader(new InputStreamReader(System.in));</div><div class="line">                    writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));</div><div class="line">                    String content;</div><div class="line">                    while((content = input.readLine())!= null)&#123;</div><div class="line">                        writer.write(content+&quot;\n&quot;);</div><div class="line">                        writer.flush();</div><div class="line">                    &#125;</div><div class="line">                &#125; catch (IOException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;finally &#123;</div><div class="line">                    try &#123;</div><div class="line">                        input.close();</div><div class="line">                        writer.close();</div><div class="line">                    &#125; catch (IOException e) &#123;</div><div class="line">                        e.printStackTrace();</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line">    &#125;</div><div class="line">    public void manageConnection(final Socket socket) &#123;</div><div class="line"></div><div class="line">        new Thread(new Runnable() &#123;</div><div class="line">            BufferedReader reader = null;</div><div class="line">            BufferedWriter writer = null;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">                try &#123;</div><div class="line">                    System.out.println(&quot;Socket &quot; + socket.hashCode() + &quot; has connected&quot;);</div><div class="line">                    reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));</div><div class="line">                    writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));</div><div class="line">                    String receivedMsg;</div><div class="line">                    while ((receivedMsg = reader.readLine()) != null) &#123;</div><div class="line">                        System.out.println(receivedMsg);</div><div class="line">                        writer.write(&quot;server received : &quot; + receivedMsg+&quot;\n&quot;);</div><div class="line">                        writer.flush();</div><div class="line">                    &#125;</div><div class="line">                &#125;catch (Exception e)&#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;finally&#123;</div><div class="line">                    try &#123;</div><div class="line">                        reader.close();</div><div class="line">                        writer.close();</div><div class="line">                    &#125;catch (Exception e )&#123;</div><div class="line">                        e.printStackTrace();</div><div class="line">                    &#125;</div><div class="line">                    &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说，这是个简单的socket通信，也是最基本的服务器客户端通信方式，从简单的开始，慢慢进步！</p>
+<p>gituhb：<a href="https://github.com/wincber/SocketTalkClientDemo" target="_blank" rel="external">https://github.com/wincber/SocketTalkClientDemo</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/21/面试题知识点（一）/" itemprop="url">
                   面试题知识点（一）
                 </a>
@@ -322,7 +446,7 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看到群里有人发面试题我就试着看了看，发现有很多自己不明白的，所以写这个，一方面相当于自己的笔记，也能更好的记住，理解，另一方面也为其他人提供一些<br>知识点参考吧。<br>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看到群里有人发面试题我就试着看了看，发现有很多自己不明白的，所以写这个，一方面相当于自己的笔记，也能更好的记住，理解，另一方面也为其他人提供一些知识点参考吧。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/10/21/面试题知识点（一）/#more" rel="contents">
               阅读全文 &raquo;
@@ -1230,7 +1354,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
