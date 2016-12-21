@@ -92,7 +92,7 @@
 <meta property="og:url" content="http://wincber.com/2016/12/04/android服务器端与客户端Socket通信Demo/index.html">
 <meta property="og:site_name" content="wincber note">
 <meta property="og:description" content="前言最近计网看到TCP/IP协议，和socket通信，看android的网络编程书上刚开始讲TCP/IP协议，并且讲socket通信，就决定接触一下socket编程，这个涉及到服务器端和客户端两个方面，但是原理是一样的。">
-<meta property="og:updated_time" content="2016-12-21T17:17:22.881Z">
+<meta property="og:updated_time" content="2016-12-21T17:19:14.467Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android服务器端与客户端Socket通信Demo">
 <meta name="twitter:description" content="前言最近计网看到TCP/IP协议，和socket通信，看android的网络编程书上刚开始讲TCP/IP协议，并且讲socket通信，就决定接触一下socket编程，这个涉及到服务器端和客户端两个方面，但是原理是一样的。">
@@ -322,7 +322,8 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近计网看到TCP/IP协议，和socket通信，看android的网络编程书上刚开始讲TCP/IP协议，并且讲socket通信，就决定接触一下socket编程，这个涉及到服务器端和客户端两个方面，但是原理是一样的。<br><a id="more"></a></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><pre><code>最近计网看到TCP/IP协议，和socket通信，看android的网络编程书上刚开始讲TCP/IP协议，并且讲socket通信，就决定接触一下socket编程，这个涉及到服务器端和客户端两个方面，但是原理是一样的。
+</code></pre><a id="more"></a>
 <h2 id="Socket-通信"><a href="#Socket-通信" class="headerlink" title="Socket 通信"></a>Socket 通信</h2><pre><code>至于TCP/IP协议就不详说了，大家也学过，网上也有很多资料，简单的说，TCP是面向连接的，所以这里用到Socket编程使用socket建立服务器与客户端间的连接。
 </code></pre><p>这个小Demo里做了服务器端和客户端，服务器端是在pc，用SocketServer来搭建，客户端在android上，也是用java的socket来建立。</p>
 <h2 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h2><h3 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h3><pre><code>开始时练习的不是在android上，是java上socket通信，简单的一对一的话不用开启线程，要使多个客户端连入的话就需要每次接3受到一个socket连接就开启一个线程来处理这个socket的通信，要想服务器也向客户端发送消息的话就要再开启发送服务器自定义的消息
