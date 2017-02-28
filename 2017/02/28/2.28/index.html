@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解（通过简单的查看源码以及网上博客分析），还有">
+<meta name="description" content="2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解。（通过简单的查看源码以及网上博客分析），还有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2月28日：String，StringBuffer，StringBuilder和集合分类">
 <meta property="og:url" content="http://wincber.com/2017/02/28/2.28/index.html">
 <meta property="og:site_name" content="wincber note">
-<meta property="og:description" content="2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解（通过简单的查看源码以及网上博客分析），还有">
-<meta property="og:updated_time" content="2017-02-28T17:21:21.227Z">
+<meta property="og:description" content="2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解。（通过简单的查看源码以及网上博客分析），还有">
+<meta property="og:updated_time" content="2017-02-28T17:24:04.385Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2月28日：String，StringBuffer，StringBuilder和集合分类">
-<meta name="twitter:description" content="2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解（通过简单的查看源码以及网上博客分析），还有">
+<meta name="twitter:description" content="2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解。（通过简单的查看源码以及网上博客分析），还有">
 
 
 
@@ -322,7 +322,7 @@
       
 
       
-        <p>2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解<br>（通过简单的查看源码以及网上博客分析），还有<a id="more"></a> 给博客站点装了个网易云音乐的外链播放器，还不错哦。还有这两天买了两本书《Android开发艺术探索》，《算法导论》，android要了解深层知识，算法也要刷！<br>废话：刚开学这两天事特别多，压力也很多，事多是身份证丢了要异地补办麻烦的很，还有报了驾校，接下来的日子也要挤出时间来练车，还好这学期课不是很多（暂时），压力大是因为打算找个实习，刚好最近各大公司都开始了内推，心里很纠结，一方面觉得自己实力不够进大公司（甚至小公司自己心里也没有底），另一方面又想试试，唉，但是不管怎么说接下<br>的日子肯定是要加倍努力。<br>正文：<br>想着要实习，是要看一些面试的题目或者老生常谈的问题，刚好这学期课表里也有java，自己也要巩固一下java。所以就来到了String，StringBuffer，StringBuilder三者，以及集合的分类和使用。</p>
+        <p>2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解。（通过简单的查看源码以及网上博客分析），还有<a id="more"></a> 给博客站点装了个网易云音乐的外链播放器，还不错哦。还有这两天买了两本书《Android开发艺术探索》，《算法导论》，android要了解深层知识，算法也要刷！<br>废话：刚开学这两天事特别多，压力也很多，事多是身份证丢了要异地补办麻烦的很，还有报了驾校，接下来的日子也要挤出时间来练车，还好这学期课不是很多（暂时），压力大是因为打算找个实习，刚好最近各大公司都开始了内推，心里很纠结，一方面觉得自己实力不够进大公司（甚至小公司自己心里也没有底），另一方面又想试试，唉，但是不管怎么说接下<br>的日子肯定是要加倍努力。<br>正文：<br>想着要实习，是要看一些面试的题目或者老生常谈的问题，刚好这学期课表里也有java，自己也要巩固一下java。所以就来到了String，StringBuffer，StringBuilder三者，以及集合的分类和使用。</p>
 <h2 id="String，StringBuffer，StringBuilder"><a href="#String，StringBuffer，StringBuilder" class="headerlink" title="String，StringBuffer，StringBuilder"></a>String，StringBuffer，StringBuilder</h2><p>网上分析的文章有很多，但想着自己写一遍更加深了解。。。<br>首先它们都是通过 //char[] 来存储字符串的字符，其中String中的 //char[] 是final型的 所以String是不可变的，而StringBuffer和StringBuilder都是继承自AbstractStringBuilder，其字符串是可变的。<br>所以有常说的String不能修改，而要进行字符串的修改的话使用StringBuffer和StringBuilder，而StringBuffer和StringBuilder的区别在于线程安全区别，看源码可以知道StringBuffer和StringBuilder虽然基类都是AbstractStringBuilder且内部方法实现基本相同，但是区别在于，StringBuffer是线程安全的，其与StringBuilder的方法区别是他的方法都是sychronized的即线程同步的，所以在多线程中使用StringBuffer更加安全，而单线程中的话使用StringBuilder会更加高效。</p>
 <h2 id="集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类"><a href="#集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类" class="headerlink" title="集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类"></a>集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类</h2><pre><code>List:ArrayList,LinkedList,Vector,Stack.
 Set：HashSet
