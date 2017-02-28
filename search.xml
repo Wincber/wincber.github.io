@@ -4,6 +4,12 @@
   
     
     <entry>
+      <title><![CDATA[2月28日：String，StringBuffer，StringBuilder，集合知识]]></title>
+      <url>http://wincber.com/2017/02/28/2.28/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[android服务器端与客户端Socket通信Demo]]></title>
       <url>http://wincber.com/2016/12/04/android%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AFSocket%E9%80%9A%E4%BF%A1Demo/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  最近计网看到TCP/IP协议，和socket通信，看android的网络编程书上刚开始讲TCP/IP协议，并且讲socket通信，就决定接触一下socket编程，这个涉及到服务器端和客户端两个方面，但是原理是一样的。<br><a id="more"></a></p>
