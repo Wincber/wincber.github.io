@@ -40,9 +40,7 @@
 Set：HashSet
 Map:HashMap HashTable，TreeMap，WeakHashMap
 工具类：Arrays，Collections
-其继承与实现依赖关系可见下图：
-&lt;img src=&quot;http://oczm2hjoz.bkt.clouddn.com/Image/jpg/Collection.jpg&quot; width = &quot;300&quot; height = &quot;200&quot; alt=&quot;关系图&quot; align=center /&gt;
-</code></pre><p>关系很明然对吧，Map这边的还没有看完，所以明天写集合部分的所有总结吧</p>
+</code></pre><p>其继承与实现依赖关系可见下图：<br><img src="http://oczm2hjoz.bkt.clouddn.com/Image/jpg/Collection.jpg" width="300" height="200" alt="关系图" align="center"><br>关系很明然对吧，Map这边的还没有看完，所以明天写集合部分的所有总结吧</p>
 <p>总结：还是要看一些深层次的东西啊！</p>
 ]]></content>
     </entry>
