@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[java List小结]]></title>
       <url>http://wincber.com/2017/03/01/java-%E9%9B%86%E5%90%88%E5%B0%8F%E7%BB%93/</url>
-      <content type="html"><![CDATA[<p>继续昨天的，集合知识小结。（简单的阅读了源码和网上的一些解读）</p>
+      <content type="html"><![CDATA[<p>继续昨天的，集合知识小结。（简单的阅读了源码和网上的一些解读。</p>
 <h2 id="Colletion"><a href="#Colletion" class="headerlink" title="Colletion"></a>Colletion</h2><p>和Map并肩构成集合类的最根本的接口，继承自Iterable接口，所有集合都可用迭代器迭代来遍历集合<br><a id="more"></a><br>API主要有：</p>
 <pre><code>int size();         集合大小
 boolean isEmpty();    是否为空集
@@ -96,17 +96,17 @@ peek()  查看栈顶元素
     </entry>
     
     <entry>
-      <title><![CDATA[2.28 Android IPC前两节收获]]></title>
+      <title><![CDATA[2.28 Android IPC前三节收获]]></title>
       <url>http://wincber.com/2017/03/01/2-28-Android-IPC/</url>
-      <content type="html"><![CDATA[<p>买了《Android开发艺术探索》，看了IPC这一章节的前两个小节，序列化机制和Binder，即进程间通信这一节，谈谈收获<br><a id="more"></a><br>进程间通信在Android开发中好像不是很常说（至少以我的目前少得可怜的经验中除了特意测试进程的demo外没有用过进程间通信）</p>
-<h2 id="第一小节-IPC介绍"><a href="#第一小节-IPC介绍" class="headerlink" title="第一小节 IPC介绍"></a>第一小节 IPC介绍</h2><p>第一小节主要介绍了Android IPC机制的概念，主要提出了Andorid上的进程间通信和其他平台上的进程间通信，提到各个平台的特有的进程间通信方式比如Windows的管道，邮槽，Linux上的命名管道，信号量，共享内存等等<br>而Android上特有的就是Binder，此外还有socket（socket在各个平台都可以吧），而用到进程间通信的场景主要1，应用体积大需要开启多进程来获取多块内,2，特殊模块需要单独运行在单个进程中，3，向其他应用获取数据（用ContentProvider也是进程间通信）</p>
-<h2 id="第二小节-多进程模式"><a href="#第二小节-多进程模式" class="headerlink" title="第二小节 多进程模式"></a>第二小节 多进程模式</h2><p>第一小节通过android:process的设置的demo介绍了开启新进程的方式<br>第二小节通过创建一个类，通过在不同进程中修改该类中的一个静态变量值而得出的多进程数据不能同步共享因为每个进程中该类是单独的一个副本，修改类中的静态值不会影响其他进程<br>所以多进程可能造成的问题：</p>
+      <content type="html"><![CDATA[<p>买了《Android开发艺术探索》，看了IPC这一章节的前两个小节，序列化机制和Binder，即进程间通信这一节，谈谈收获。<br><a id="more"></a><br>进程间通信在Android开发中好像不是很常说（至少以我的目前少得可怜的经验中除了特意测试进程的demo外没有用过进程间通信）。</p>
+<h2 id="第一小节-IPC介绍"><a href="#第一小节-IPC介绍" class="headerlink" title="第一小节 IPC介绍"></a>第一小节 IPC介绍</h2><p>第一小节主要介绍了Android IPC机制的概念，主要提出了Andorid上的进程间通信和其他平台上的进程间通信，提到各个平台的特有的进程间通信方式比如Windows的管道，邮槽，Linux上的命名管道，信号量，共享内存等等。<br>而Android上特有的就是Binder，此外还有socket（socket在各个平台都可以吧），而用到进程间通信的场景主要1，应用体积大需要开启多进程来获取多块内,2，特殊模块需要单独运行在单个进程中，3，向其他应用获取数据（用ContentProvider也是进程间通信）。</p>
+<h2 id="第二小节-多进程模式"><a href="#第二小节-多进程模式" class="headerlink" title="第二小节 多进程模式"></a>第二小节 多进程模式</h2><p>第一小节通过android:process的设置的demo介绍了开启新进程的方式。<br>第二小节通过创建一个类，通过在不同进程中修改该类中的一个静态变量值而得出的多进程数据不能同步共享因为每个进程中该类是单独的一个副本，修改类中的静态值不会影响其他进程。<br>所以多进程可能造成的问题：</p>
 <pre><code>1.静态成员和单例模式完全失效
 2.线程同步机制完全失效
 3.SharedPreferences的可靠性下降（底层通过读/写 XML文件实现，并发读写会出问题）
 4.Application会多次创建（一个进程一个应用）
-</code></pre><h2 id="第三小节-序列化机制"><a href="#第三小节-序列化机制" class="headerlink" title="第三小节 序列化机制"></a>第三小节 序列化机制</h2><h3 id="Serializable接口"><a href="#Serializable接口" class="headerlink" title="Serializable接口"></a>Serializable接口</h3><p>是java的序列化，serialVersionUID就是序列化标记，用于辅助进行序列化和反序列化.通过FileOutputStream，FileInputStream进行读写（这里是读写到文件中）来实现简单的序列化</p>
-<h3 id="Parcelable接口"><a href="#Parcelable接口" class="headerlink" title="Parcelable接口"></a>Parcelable接口</h3><p>是android特有的序列化实现Serializable接口后，一个类的对象就能实现序列化可以通过Intent和Binder传递<br>主要实现功能有 </p>
+</code></pre><h2 id="第三小节-序列化机制"><a href="#第三小节-序列化机制" class="headerlink" title="第三小节 序列化机制"></a>第三小节 序列化机制</h2><h3 id="Serializable接口"><a href="#Serializable接口" class="headerlink" title="Serializable接口"></a>Serializable接口</h3><p>是java的序列化，serialVersionUID就是序列化标记，用于辅助进行序列化和反序列化.通过FileOutputStream，FileInputStream进行读写（这里是读写到文件中）来实现简单的序列化。</p>
+<h3 id="Parcelable接口"><a href="#Parcelable接口" class="headerlink" title="Parcelable接口"></a>Parcelable接口</h3><p>是android特有的序列化实现Serializable接口后，一个类的对象就能实现序列化可以通过Intent和Binder传递。<br>主要实现功能有 </p>
 <pre><code>1.序列化  writeToParcel(Parcle out,int flags) 通过Parcel的write方法完成
 2.反序列化 CREATOR完成  通过Parcle的read方法完成
 3.内容描述 describeContent() 方法完成 （几乎所有情况下都返回0）
