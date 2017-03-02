@@ -4,11 +4,9 @@
   
     
     <entry>
-      <title></title>
+      <title><![CDATA[java List小结]]></title>
       <url>http://wincber.com/2017/03/01/java-%E9%9B%86%E5%90%88%E5%B0%8F%E7%BB%93/</url>
-      <content type="html"><![CDATA[<hr>
-<p>title: java List小结<br>date: 2017-03-01 11:02:21</p>
-<h2 id="tags-java-集合-List"><a href="#tags-java-集合-List" class="headerlink" title="tags: [java,集合,List]"></a>tags: [java,集合,List]</h2><p>继续昨天的，集合知识小结。（简单的阅读了源码和网上的一些解读）</p>
+      <content type="html"><![CDATA[<p>继续昨天的，集合知识小结。（简单的阅读了源码和网上的一些解读）</p>
 <h2 id="Colletion"><a href="#Colletion" class="headerlink" title="Colletion"></a>Colletion</h2><p>和Map并肩构成集合类的最根本的接口，继承自Iterable接口，所有集合都可用迭代器迭代来遍历集合<br><a id="more"></a><br>API主要有：</p>
 <pre><code>int size();         集合大小
 boolean isEmpty();    是否为空集
