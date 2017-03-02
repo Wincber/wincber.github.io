@@ -96,8 +96,23 @@ peek()  查看栈顶元素
     </entry>
     
     <entry>
+      <title><![CDATA[2月28日：String，StringBuffer，StringBuilder和集合分类]]></title>
+      <url>http://wincber.com/2017/02/28/2.28/</url>
+      <content type="html"><![CDATA[<p>2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解。（通过简单的查看源码以及网上博客分析），还有<a id="more"></a> 给博客站点装了个网易云音乐的外链播放器，还不错哦。还有这两天买了两本书《Android开发艺术探索》，《算法导论》，android要了解深层知识，算法也要刷！</p>
+<p>废话：刚开学这两天事特别多，压力也很多，事多是身份证丢了要异地补办麻烦的很，还有报了驾校，接下来的日子也要挤出时间来练车，还好这学期课不是很多（暂时），压力大是因为打算找个实习，刚好最近各大公司都开始了内推，心里很纠结，一方面觉得自己实力不够进大公司（甚至小公司自己心里也没有底），另一方面又想试试，唉，但是不管怎么说接下<br>的日子肯定是要加倍努力。<br>正文：<br>想着要实习，是要看一些面试的题目或者老生常谈的问题，刚好这学期课表里也有java，自己也要巩固一下java。所以就来到了String，StringBuffer，StringBuilder三者，以及集合的分类和使用。</p>
+<h2 id="String，StringBuffer，StringBuilder"><a href="#String，StringBuffer，StringBuilder" class="headerlink" title="String，StringBuffer，StringBuilder"></a>String，StringBuffer，StringBuilder</h2><p>网上分析的文章有很多，但想着自己写一遍更加深了解。。。<br>首先它们都是通过 //char[] 来存储字符串的字符，其中String中的 //char[] 是final型的 所以String是不可变的，而StringBuffer和StringBuilder都是继承自AbstractStringBuilder，其字符串是可变的。<br>所以有常说的String不能修改，而要进行字符串的修改的话使用StringBuffer和StringBuilder，而StringBuffer和StringBuilder的区别在于线程安全区别，看源码可以知道StringBuffer和StringBuilder虽然基类都是AbstractStringBuilder且内部方法实现基本相同，但是区别在于，StringBuffer是线程安全的，其与StringBuilder的方法区别是他的方法都是sychronized的即线程同步的，所以在多线程中使用StringBuffer更加安全，而单线程中的话使用StringBuilder会更加高效。</p>
+<h2 id="集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类"><a href="#集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类" class="headerlink" title="集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类"></a>集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类</h2><pre><code>List（有序可重复）:ArrayList,LinkedList,Vector,Stack.
+Set（不可重复）：HashSet
+Map:HashMap HashTable，TreeMap，WeakHashMap
+工具类：Arrays，Collections
+</code></pre><p>其继承与实现依赖关系可见下图：<br><img src="http://oczm2hjoz.bkt.clouddn.com/Image/jpg/Collection.jpg" width="600" height="500" alt="关系图" align="center"><br>关系很明然对吧，Map这边的还没有看完，所以明天写集合部分的所有总结吧</p>
+<p>总结：还是要看一些深层次的东西啊！</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[2.28 Android IPC前三节收获]]></title>
-      <url>http://wincber.com/2017/03/01/2-28-Android-IPC/</url>
+      <url>http://wincber.com/2017/02/28/2-28-Android-IPC/</url>
       <content type="html"><![CDATA[<p>买了《Android开发艺术探索》，看了IPC这一章节的前两个小节，序列化机制和Binder，即进程间通信这一节，谈谈收获。<br><a id="more"></a><br>进程间通信在Android开发中好像不是很常说（至少以我的目前少得可怜的经验中除了特意测试进程的demo外没有用过进程间通信）。</p>
 <h2 id="第一小节-IPC介绍"><a href="#第一小节-IPC介绍" class="headerlink" title="第一小节 IPC介绍"></a>第一小节 IPC介绍</h2><p>第一小节主要介绍了Android IPC机制的概念，主要提出了Andorid上的进程间通信和其他平台上的进程间通信，提到各个平台的特有的进程间通信方式比如Windows的管道，邮槽，Linux上的命名管道，信号量，共享内存等等。<br>而Android上特有的就是Binder，此外还有socket（socket在各个平台都可以吧），而用到进程间通信的场景主要1，应用体积大需要开启多进程来获取多块内,2，特殊模块需要单独运行在单个进程中，3，向其他应用获取数据（用ContentProvider也是进程间通信）。</p>
 <h2 id="第二小节-多进程模式"><a href="#第二小节-多进程模式" class="headerlink" title="第二小节 多进程模式"></a>第二小节 多进程模式</h2><p>第一小节通过android:process的设置的demo介绍了开启新进程的方式。<br>第二小节通过创建一个类，通过在不同进程中修改该类中的一个静态变量值而得出的多进程数据不能同步共享因为每个进程中该类是单独的一个副本，修改类中的静态值不会影响其他进程。<br>所以多进程可能造成的问题：</p>
@@ -119,21 +134,6 @@ peek()  查看栈顶元素
 6.Proxy#addBook 同理
 </code></pre><p>暂时到这</p>
 <p>总结：IPC机制尤其是Binder虽然我没用过，但是是很有必要了解并明白原理的，明天接着看写！</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[2月28日：String，StringBuffer，StringBuilder和集合分类]]></title>
-      <url>http://wincber.com/2017/02/28/2.28/</url>
-      <content type="html"><![CDATA[<p>2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解。（通过简单的查看源码以及网上博客分析），还有<a id="more"></a> 给博客站点装了个网易云音乐的外链播放器，还不错哦。还有这两天买了两本书《Android开发艺术探索》，《算法导论》，android要了解深层知识，算法也要刷！</p>
-<p>废话：刚开学这两天事特别多，压力也很多，事多是身份证丢了要异地补办麻烦的很，还有报了驾校，接下来的日子也要挤出时间来练车，还好这学期课不是很多（暂时），压力大是因为打算找个实习，刚好最近各大公司都开始了内推，心里很纠结，一方面觉得自己实力不够进大公司（甚至小公司自己心里也没有底），另一方面又想试试，唉，但是不管怎么说接下<br>的日子肯定是要加倍努力。<br>正文：<br>想着要实习，是要看一些面试的题目或者老生常谈的问题，刚好这学期课表里也有java，自己也要巩固一下java。所以就来到了String，StringBuffer，StringBuilder三者，以及集合的分类和使用。</p>
-<h2 id="String，StringBuffer，StringBuilder"><a href="#String，StringBuffer，StringBuilder" class="headerlink" title="String，StringBuffer，StringBuilder"></a>String，StringBuffer，StringBuilder</h2><p>网上分析的文章有很多，但想着自己写一遍更加深了解。。。<br>首先它们都是通过 //char[] 来存储字符串的字符，其中String中的 //char[] 是final型的 所以String是不可变的，而StringBuffer和StringBuilder都是继承自AbstractStringBuilder，其字符串是可变的。<br>所以有常说的String不能修改，而要进行字符串的修改的话使用StringBuffer和StringBuilder，而StringBuffer和StringBuilder的区别在于线程安全区别，看源码可以知道StringBuffer和StringBuilder虽然基类都是AbstractStringBuilder且内部方法实现基本相同，但是区别在于，StringBuffer是线程安全的，其与StringBuilder的方法区别是他的方法都是sychronized的即线程同步的，所以在多线程中使用StringBuffer更加安全，而单线程中的话使用StringBuilder会更加高效。</p>
-<h2 id="集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类"><a href="#集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类" class="headerlink" title="集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类"></a>集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类</h2><pre><code>List（有序可重复）:ArrayList,LinkedList,Vector,Stack.
-Set（不可重复）：HashSet
-Map:HashMap HashTable，TreeMap，WeakHashMap
-工具类：Arrays，Collections
-</code></pre><p>其继承与实现依赖关系可见下图：<br><img src="http://oczm2hjoz.bkt.clouddn.com/Image/jpg/Collection.jpg" width="600" height="500" alt="关系图" align="center"><br>关系很明然对吧，Map这边的还没有看完，所以明天写集合部分的所有总结吧</p>
-<p>总结：还是要看一些深层次的东西啊！</p>
 ]]></content>
     </entry>
     
