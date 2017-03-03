@@ -4,6 +4,12 @@
   
     
     <entry>
+      <title><![CDATA[Android 开发艺术探索2.4收获]]></title>
+      <url>http://wincber.com/2017/03/03/Android-%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A22-4%E6%94%B6%E8%8E%B7/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[java List小结]]></title>
       <url>http://wincber.com/2017/03/01/java-%E9%9B%86%E5%90%88%E5%B0%8F%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>继续昨天的，集合知识小结。（简单的阅读了源码和网上的一些解读。</p>
@@ -168,7 +174,7 @@ Map:HashMap HashTable，TreeMap，WeakHashMap
     </entry>
     
     <entry>
-      <title><![CDATA[拍照裁剪]]></title>
+      <title><![CDATA[android之拍照裁剪]]></title>
       <url>http://wincber.com/2016/10/16/%E6%8B%8D%E7%85%A7%E8%A3%81%E5%89%AA/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>基本现在什么app都是有个人信息这一栏，有你的头像，有你的其他信息什么的，基本上选择头像的逻辑都是点击头像选择1，拍照 2，从图库中选取<br>所以拍照，照片裁剪基本上是必不可少的，也是在把第一行代码实践一遍的时候发现的问题，并尝试了解决。<br><a id="more"></a></p>
 <h2 id="拍照"><a href="#拍照" class="headerlink" title="拍照"></a>拍照</h2><p>要想知道在你开发的时候最合适的姿势还是要去官网看，也是因为书中的代码有些已经被弃用。<br>先是拍照，第一行代码中的拍照intent是 调用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);</div><div class="line">Intent intent = new Intent(“com.android.media.action.IMAGE_CAPTURE”);</div><div class="line">Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE_SECURE);</div></pre></td></tr></table></figure></p>
@@ -182,20 +188,6 @@ Map:HashMap HashTable，TreeMap，WeakHashMap
 <p>所以可以看出来要真的比较的话还是系统裁剪好的多（这里测试使用的是魅族手机），可以调节裁剪框的大小，比例<br>而这里用的第三方只能等比例的调节大小，且裁剪框是一个正方形，无法截取全部，当然如果你用来做头像也是当然可以的了<br>另外一点，第三方的ui有点不好看<br>最后一点，第三方裁剪后会按照压缩成代码中的图片尺寸，而系统的话就是裁多大就是多大</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>由此可见，这个第三方还不够完美，你可以去找找其他好的库，但是如果用来做头像的话这个裁剪是没问题的</p>
 <p>遗留问题:在选取照片时，如果我选中了一个照片，几秒钟内不点确定的话，那张图片会取消它的选择状态，并且暂时无法再选中，除非你先选一下另一个，再选它，为什么呢？</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[仿微信界面的Demo]]></title>
-      <url>http://wincber.com/2016/09/24/%E4%BB%BF%E5%BE%AE%E4%BF%A1%E7%95%8C%E9%9D%A2%E7%9A%84Demo/</url>
-      <content type="html"><![CDATA[<p>先挖坑</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[菜鸟对ShareSdkd的小小探索]]></title>
-      <url>http://wincber.com/2016/09/24/%E8%8F%9C%E9%B8%9F%E5%AF%B9ShareSdkd%E7%9A%84%E5%B0%8F%E5%B0%8F%E6%8E%A2%E7%B4%A2/</url>
-      <content type="html"><![CDATA[<p>感觉效率太差了，得多点时间看</p>
 ]]></content>
     </entry>
     
@@ -236,19 +228,6 @@ Map:HashMap HashTable，TreeMap，WeakHashMap
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>ViewPager已经是被用到很多地方的控件了，掌握它还是蛮重要的，通过对其的练习了解到了很多。<br>文章中一些名词或者概念讲的不对或者不清楚的请提出，水平有限，想研究关于ViewPager更深层的问题还是看文档或者大神的文章吧。</p>
 <p>这里是我的demo ： <a href="https://github.com/wincber/ViewPager_inside_ViewPager/tree/master" target="_blank" rel="external">https://github.com/wincber/ViewPager_inside_ViewPager/tree/master</a></p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[categories test]]></title>
-      <url>http://wincber.com/2016/09/05/categories-test/</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[hello blog]]></title>
-      <url>http://wincber.com/2016/09/03/hello-blog/</url>
-      <content type="html"><![CDATA[<p>It’s my first test about Blog,hope that I can get more .</p>
-<h2 id="It’s-A-title"><a href="#It’s-A-title" class="headerlink" title="It’s A title"></a>It’s A title</h2>]]></content>
     </entry>
     
     <entry>
