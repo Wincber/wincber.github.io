@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="wincber note">
 <meta property="og:description" content="ZigZagConversationhttps://leetcode.com/problems/zigzag-conversion/?tab=Description这个题首先明白什么是ZigZag pattern才能做，它是这样的格式/*n=numRows
 Δ=2n-2    1                           2n-1                         4n-3">
-<meta property="og:updated_time" content="2017-03-08T15:18:46.264Z">
+<meta property="og:updated_time" content="2017-03-08T17:26:56.412Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3.7-LeetCode-刷题">
 <meta name="twitter:description" content="ZigZagConversationhttps://leetcode.com/problems/zigzag-conversion/?tab=Description这个题首先明白什么是ZigZag pattern才能做，它是这样的格式/*n=numRows
@@ -333,7 +333,7 @@
 Δ=        .       n+2                 .           3n               .
 Δ=        n-1 n+1                     3n-3    3n-1                 5n-5
 Δ=2n-2    n                           3n-2                         5n-4
-</code></pre><p>*/<br><a id="more"></a><br>这样就一目了然了，需要循环着从0-(numRows-1),再返回至0，还是比较简单的，直接代码</p>
+</code></pre><p>*/<br><a id="more"></a><br>这样就一目了然了，需要循环着从0-(numRows-1),再返回至0，还是比较简单的，直接代码：</p>
 <p>   public String convert(String s, int numRows) {<br>        StringBuilder[] sbs = new StringBuilder[numRows];<br>        for(int i = 0;i &lt; numRows;i++)<br>            sbs[i] = new StringBuilder();<br>        int len = s.length();<br>        int temp = 0;<br>        if(numRows == 1)<br>        sbs[0].append(s);<br>        else<br>        for(int i = 0,j = 0;i &lt; len;i++){<br>           if(j == numRows - 1) temp = -1;<br>           if(j == 0 &amp;&amp; i != 0 ) temp = 1;<br>           j += temp;<br>           sbs[j].append(s.charAt(i));<br>        }<br>        for(int i = 0;i &lt; numRows;i++){<br>            sbs[0].append(sbs[i]);<br>        }<br>        return sbs[0].toString();<br>    }</p>
 <p>需要注意的地方是，在0和numRows-1处的转折，这个题也让我测试得到了StringBuilder确实要比StringBuffer，前者61ms，后者67ms。</p>
 

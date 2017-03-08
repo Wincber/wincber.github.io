@@ -14,7 +14,7 @@
 Δ=        .       n+2                 .           3n               .
 Δ=        n-1 n+1                     3n-3    3n-1                 5n-5
 Δ=2n-2    n                           3n-2                         5n-4
-</code></pre><p>*/<br><a id="more"></a><br>这样就一目了然了，需要循环着从0-(numRows-1),再返回至0，还是比较简单的，直接代码</p>
+</code></pre><p>*/<br><a id="more"></a><br>这样就一目了然了，需要循环着从0-(numRows-1),再返回至0，还是比较简单的，直接代码：</p>
 <p>   public String convert(String s, int numRows) {<br>        StringBuilder[] sbs = new StringBuilder[numRows];<br>        for(int i = 0;i &lt; numRows;i++)<br>            sbs[i] = new StringBuilder();<br>        int len = s.length();<br>        int temp = 0;<br>        if(numRows == 1)<br>        sbs[0].append(s);<br>        else<br>        for(int i = 0,j = 0;i &lt; len;i++){<br>           if(j == numRows - 1) temp = -1;<br>           if(j == 0 &amp;&amp; i != 0 ) temp = 1;<br>           j += temp;<br>           sbs[j].append(s.charAt(i));<br>        }<br>        for(int i = 0;i &lt; numRows;i++){<br>            sbs[0].append(sbs[i]);<br>        }<br>        return sbs[0].toString();<br>    }</p>
 <p>需要注意的地方是，在0和numRows-1处的转折，这个题也让我测试得到了StringBuilder确实要比StringBuffer，前者61ms，后者67ms。</p>
 ]]></content>
@@ -174,6 +174,7 @@ public int findComplement(int num){
 可以A进程通过Intent启用B进程的一个Service进行计算工作，计算完成后在启动B进程所需要的组件，将计算结果给到组件。
 </code></pre><h2 id="使用文件共享"><a href="#使用文件共享" class="headerlink" title="使用文件共享"></a>使用文件共享</h2><p>Android系统上对文件的并发读写是没有限制的。（但尽量避免并发写），这种方式适合在数据同步要求不高的进程间进行通信。此外特别提出SharedPreferences的特殊性，其底层实现是对xml文件的读写，对于系统对他的读写是有一定的缓存策略，所以并发读写时会有一定的几率丢失数据，高并发时会更严重。所以不建议进程间通信分享SharedPreference。</p>
 <p>此外给出了一个Demo，主要是通过一个进程（Activity）开启一个线程，通过序列化将一个对象写入文件，而另一个进程（Activity）开启一个线程，通过反序列化读出文件中的对象。都实现在onResume()中用于数据恢复。</p>
+<h2 id="使用Messenger"><a href="#使用Messenger" class="headerlink" title="使用Messenger"></a>使用Messenger</h2><p>Messenger底层实现是AIDL，适合用来在客户端和服务器端发送请求。这一节也是通过代码demo来讲解Messenger的通信过程，通过构建Service运行在个进程中，通过Messenger发送请求并处理请求，缺点是，服务器端一次只能处理一个客户端发来的请求。</p>
 ]]></content>
     </entry>
     
