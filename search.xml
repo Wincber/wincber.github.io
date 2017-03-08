@@ -4,9 +4,170 @@
   
     
     <entry>
-      <title><![CDATA[Android 开发艺术探索2.4收获]]></title>
-      <url>http://wincber.com/2017/03/03/Android-%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A22-4%E6%94%B6%E8%8E%B7/</url>
+      <title><![CDATA[3.7-LeetCode-刷题]]></title>
+      <url>http://wincber.com/2017/03/07/3-7-LeetCode-%E5%88%B7%E9%A2%98/</url>
+      <content type="html"><![CDATA[<h2 id="ZigZagConversation"><a href="#ZigZagConversation" class="headerlink" title="ZigZagConversation"></a>ZigZagConversation</h2><p><a href="https://leetcode.com/problems/zigzag-conversion/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/zigzag-conversion/?tab=Description</a><br>这个题首先明白什么是ZigZag pattern才能做，它是这样的格式<br>/<em>n=numRows<br>Δ=2n-2    1                           2n-1                         4n-3<br>Δ=        2                     2n-2  2n                    4n-4   4n-2<br>Δ=        3               2n-3        2n+1              4n-5       .<br>Δ=        .           .               .               .            .<br>Δ=        .       n+2                 .           3n               .<br>Δ=        n-1 n+1                     3n-3    3n-1                 5n-5<br>Δ=2n-2    n                           3n-2                         5n-4
+</em>/<br><a id="more"></a><br>这样就一目了然了，需要循环着从0-(numRows-1),再返回至0，还是比较简单的，直接代码</p>
+<p>   public String convert(String s, int numRows) {<br>        StringBuilder[] sbs = new StringBuilder[numRows];<br>        for(int i = 0;i &lt; numRows;i++)<br>            sbs[i] = new StringBuilder();<br>        int len = s.length();<br>        int temp = 0;<br>        if(numRows == 1)<br>        sbs[0].append(s);<br>        else<br>        for(int i = 0,j = 0;i &lt; len;i++){<br>           if(j == numRows - 1) temp = -1;<br>           if(j == 0 &amp;&amp; i != 0 ) temp = 1;<br>           j += temp;<br>           sbs[j].append(s.charAt(i));<br>        }<br>        for(int i = 0;i &lt; numRows;i++){<br>            sbs[0].append(sbs[i]);<br>        }<br>        return sbs[0].toString();<br>    }</p>
+<p>需要注意的地方是，在0和numRows-1处的转折，这个题也让我测试得到了StringBuilder确实要比StringBuffer，前者61ms，后者67ms。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Spring 开发初试]]></title>
+      <url>http://wincber.com/2017/03/07/Spring-%E5%BC%80%E5%8F%91%E5%88%9D%E8%AF%95/</url>
       <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Retrofit Android 初试]]></title>
+      <url>http://wincber.com/2017/03/07/Retrofit-Android-%E5%88%9D%E8%AF%95/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android MVP 初试]]></title>
+      <url>http://wincber.com/2017/03/07/Android-MVP-%E5%88%9D%E8%AF%95/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[java Map 小结]]></title>
+      <url>http://wincber.com/2017/03/06/java-Map-%E5%B0%8F%E7%BB%93/</url>
+      <content type="html"><![CDATA[<p>List之后当然是Map，学习算法时会经常用到HashMap，HashTable之类的，这都是基于实现Map接口的，包括Set也是基于Map来实现的。Map是存储着键值对的映射接口，源码开头也说明它不能存储重复的键值对，可以被看作为键值对的Collection。<a id="more"></a><br>先看Map</p>
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><p>Map作为一个最底层的实现的映射接口，其API</p>
+<pre><code>int size();    返回Map的大小
+boolean isEmpty()     此Map是否为空
+boolean containsKey(Object key)     是否包含键key
+boolean containsValue(Object value)     是否包含值value(可能是单个或多个)
+V get(Object key)   返回key所对应的值value
+V put(K key,V value)    放入键值对key-value（若有，替换旧的键值对）
+V remove(Object key)    删除key对应的键值对
+void putAll(Map&lt;? extends K,? extends V&gt; m)    将m复制进Map中
+void clear()    清空Map
+Set&lt;K&gt; keySet()     返回键集的Set集合
+Collection&lt;V&gt;  values()     返回值集的Collection集合
+Set&lt;Map.Entry&lt;K,V&gt;&gt;  entrySet()    返回键值对Entry集的Set集合
+boolean equals(Object o)    与o是否相等(调用每个entry的equals方法)
+int hashCode()  返回该map的hashCode（每个entry的hashCode的总和）
+</code></pre><p>Entry<k,v>作为一个存储键值对的实体，其内部的API主要是get/set key/value,equals,hashCode()(key和value的hashcode异或即为entry的hashcode),以及四个静态方法（从JDK1.8出现），分别是</k,v></p>
+<pre><code>comparingByKey();       根据key比较
+comparingByValue();     根据value比较
+comparingByKey(Comparator&lt;? extends K&gt; cmp);    根据key按比较器cmp来比较
+comparingByValue(Comparator&lt;? extends V&gt; cmp);  根据value按比较器cmp来比较
+</code></pre><p>均返回一个序列化的Comparator。<br>以及一系列的default的方法实现</p>
+<h2 id="AbstarcMap"><a href="#AbstarcMap" class="headerlink" title="AbstarcMap"></a>AbstarcMap</h2><p>AbstractMap实现了Map接口，定义了内部变量，keySet,values，以及一个抽象方法entrySet(),大部分操作都是基于它们来的</p>
+<pre><code>int size() ; 返回大小（返回的实际是entrySet().size()）
+boolean isEmpty();  是否为空（通过判断size()）
+boolean containsKey(Object key); boolean contansValue(Object value);V remove(Object key)  是否包含key/value，删除key对应的entry,三个方法的实现都是通过迭代器iterator迭代entrySet.iterator()，遍历每个实体进行查询。 value和key均可以为null
+V get(Object k) 返回k对应的value（同样利用entrySet.iterator()迭代器遍历获取）   
+V put(K key,V value)    不支持！
+以及putAll,clear都是利用entrySet()
+Set&lt;K&gt; keySet(); Collectio&lt;V&gt; values(); 将keySet,values进行实例化，分别实例AbstractSet,AbstactCollection
+以及其他Map的API
+值得一提的是 toString()   用entrySet.iterator()遍历，用的是StringBuilder将字符串扩展，返回的格式是{key1=value1, key2=value2}
+protected Object clone()    复制
+
+内部定义的一个SimpleEntry
+</code></pre><h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>HashMap 直接继承自AbstractMap,源码中也说了HashMap基本就是HashTable，是个散列表，均无序，除了他可以允许存储null的key和null的value，且是不同步的（非线程安全）。<br>其默认初始容量为16，默认加载因子时0.75。<br>他有几个重要的成员变量</p>
+<pre><code>transident Node&lt;K,V&gt; table;     Node类实际就是Entry，实际是个单向链表
+transident Set&lt;Map.Entry&lt;K,V&gt;&gt;  entrySet;   entry的Set集合
+transident int size;    map的大小
+transident int modCount;    改变结构的次数，用来实现fail-fast机制
+int threshold;      resize后的size大小(等于容量*加载因子  capacity * load factor)
+final float loadFactor;     加载因子
+</code></pre><p>四个构造函数</p>
+<pre><code>public HashMap();   
+public HashMap(int initialCapacity);     初始化容量为initialCapacity，加载因子为默认0.75
+public HashMap(int initialCapacity,float loadFactor)    指定初始化容量和加载因子
+public HashMap(Map&lt;? extends K,? extends V&gt; m);     创建与m相同键值对的HashMap
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[3.5 LeetCode 刷题]]></title>
+      <url>http://wincber.com/2017/03/06/3-5-LeetCode-%E5%88%B7%E9%A2%98/</url>
+      <content type="html"><![CDATA[<p>算法一直不咋地，决定要开始刷一刷算法，每天在LeetCode上做两三道，希望可以做到吧，本着买了就当看了的心态，还买了算法导论。（提前声明，这种算法文章都是我自己刷算法的笔记体会，算法大神不要吐槽，当然欢迎指导）。<br>不扯淡了，今天只做了三道算法题，都是Easy级别的（T_T），不过慢慢积累嘛，就说说这三道。</p>
+<h2 id="TwoSum"><a href="#TwoSum" class="headerlink" title="TwoSum"></a>TwoSum</h2><p><a href="https://leetcode.com/problems/two-sum/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/two-sum/?tab=Description</a></p>
+<p>题目就不说了，这个考的是HashMap的知识（Java中是HashMap，C++的话用Vector），都是利用他们的键值快速查找来解题。<br>这也是巧妙地一点，将值作为Key，索引作为Value，因为Key的查找是快速查找，HashMap中的containsKey(key)中又是利用getNode(hash,key)方法实现，内部实现是利用链表的顺序查找实现。<br>所以我提交的是</p>
+<pre><code>public class TwoSum {
+public static void main(String[] args){
+    TwoSum  ts = new TwoSum();
+    int []x = {2,7,11,12,15};
+    int []res = ts.twoSum(x,14);
+    for(int i = 0;i &lt; res.length;i++){
+        System.out.println(i == res.length-1?res[i]:res[i]);
+    }
+}
+
+/**
+ * 考点：Array HashTable
+ * HashMap是O(n) Time，O(n) Space,HashMap查找key时是快速查找，所以用索引做value，用值做key进行存储。
+ * @param x
+ * @param target
+ * @return
+ */
+public int[] twoSum(int []x,int target){
+    Map&lt;Integer,Integer&gt; map = new HashMap&lt;Integer,Integer&gt;();
+    for(int i = 0;i &lt; x.length;i++){
+        map.put(x[i],i);
+    }
+    for(int i = 0;i &lt; x.length;i++){
+        int result = target - x[i];
+        if(map.containsKey(result) &amp;&amp; i != map.get(result)){
+            return new int[]{i+1,map.get(result)+1};
+        }
+    }
+    return null;
+}
+</code></pre><p>}</p>
+<h2 id="HammingDistance"><a href="#HammingDistance" class="headerlink" title="HammingDistance"></a>HammingDistance</h2><p><a href="https://leetcode.com/problems/hamming-distance/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/hamming-distance/?tab=Description</a></p>
+<p>这道题很简单，我用的是位运算，将两个二进制数中的1通过异或放在同一个二进制数，在通过移位进行距离的计算。<br>Solution:</p>
+<pre><code>public class HammingDistance {
+public static void main(String[] args){
+    HammingDistance distance = new HammingDistance();
+    System.out.println(&quot;Distance: &quot;+ distance.hammingDistance(1,5));
+}
+public  int hammingDistance(int x, int y){
+    int result = x ^ y;
+    int dis = 0;
+    while(result!= 0){
+        if(result % 2 != 0)
+            dis++;
+        result = result &gt;&gt; 1;
+    }
+    return dis;
+}
+</code></pre><p>}</p>
+<h2 id="NumberComplement"><a href="#NumberComplement" class="headerlink" title="NumberComplement"></a>NumberComplement</h2><p><a href="https://leetcode.com/problems/number-complement/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/number-complement/?tab=Description</a></p>
+<p>这道题也不难，不过我提交失败了好几次，主要是没有考虑周全。要求一个二进制中的0和1互换后的数，刚开始我还考虑了好几种情况，事实证明想多了，我的做法简单来说，因为不以0开头，所以相当于取一位数判断0,1，再进行移位。感觉说的有点不清楚，代码一看就明白</p>
+<pre><code>public class NumberComplement {
+public static void main(String[] args){
+    NumberComplement num = new NumberComplement();
+    System.out.println(&quot;Complement is &quot; + num.findComplement(4));
+}
+public int findComplement(int num){
+    int result = 0;
+    for(int i = 0; num != 0;i++,num=num&gt;&gt;1){
+        result += (num%2==0?1:0)&lt;&lt;i;
+    }
+    return result;
+}
+</code></pre><p>}</p>
+<p>才第一天，从简单的开始，继续加油！</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android 开发艺术探索2.4收获（前三小节）]]></title>
+      <url>http://wincber.com/2017/03/03/Android-%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A22-4%E6%94%B6%E8%8E%B7/</url>
+      <content type="html"><![CDATA[<p>  2.4讲的是Android中的IPC方式，这一小节比较长（60+页），也是因为Demo代码厂都比较长，所以会分开几篇来讲，这一小节又分几个小节，所以先说个前三个小节。</p>
+<h2 id="使用Bundle"><a href="#使用Bundle" class="headerlink" title="使用Bundle"></a>使用Bundle</h2><p>Bundle是实现了序列化的，平时在写代码中也会用都用来在保存数据然后通过Intent传递的。准确的说它是实现了Parcelable接口。<br>因为比较常用所以讲的比较少。不过值得一提的是一种方案</p>
+<pre><code>A进程进行一个计算，计算完后要启动B的一个组件并把计算结果传递给B，但计算结果不支持放入Bundle。
+可以A进程通过Intent启用B进程的一个Service进行计算工作，计算完成后在启动B进程所需要的组件，将计算结果给到组件。
+</code></pre><h2 id="使用文件共享"><a href="#使用文件共享" class="headerlink" title="使用文件共享"></a>使用文件共享</h2><p>Android系统上对文件的并发读写是没有限制的。（但尽量避免并发写），这种方式适合在数据同步要求不高的进程间进行通信。此外特别提出SharedPreferences的特殊性，其底层实现是对xml文件的读写，对于系统对他的读写是有一定的缓存策略，所以并发读写时会有一定的几率丢失数据，高并发时会更严重。所以不建议进程间通信分享SharedPreference。</p>
+<p>此外给出了一个Demo，主要是通过一个进程（Activity）开启一个线程，通过序列化将一个对象写入文件，而另一个进程（Activity）开启一个线程，通过反序列化读出文件中的对象。都实现在onResume()中用于数据恢复。</p>
+]]></content>
     </entry>
     
     <entry>
@@ -103,7 +264,7 @@ peek()  查看栈顶元素
     
     <entry>
       <title><![CDATA[2月28日：String，StringBuffer，StringBuilder和集合分类]]></title>
-      <url>http://wincber.com/2017/02/28/2.28/</url>
+      <url>http://wincber.com/2017/02/28/2.28%20java%20List%20%E5%B0%8F%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解。（通过简单的查看源码以及网上博客分析），还有<a id="more"></a> 给博客站点装了个网易云音乐的外链播放器，还不错哦。还有这两天买了两本书《Android开发艺术探索》，《算法导论》，android要了解深层知识，算法也要刷！</p>
 <p>废话：刚开学这两天事特别多，压力也很多，事多是身份证丢了要异地补办麻烦的很，还有报了驾校，接下来的日子也要挤出时间来练车，还好这学期课不是很多（暂时），压力大是因为打算找个实习，刚好最近各大公司都开始了内推，心里很纠结，一方面觉得自己实力不够进大公司（甚至小公司自己心里也没有底），另一方面又想试试，唉，但是不管怎么说接下<br>的日子肯定是要加倍努力。<br>正文：<br>想着要实习，是要看一些面试的题目或者老生常谈的问题，刚好这学期课表里也有java，自己也要巩固一下java。所以就来到了String，StringBuffer，StringBuilder三者，以及集合的分类和使用。</p>
 <h2 id="String，StringBuffer，StringBuilder"><a href="#String，StringBuffer，StringBuilder" class="headerlink" title="String，StringBuffer，StringBuilder"></a>String，StringBuffer，StringBuilder</h2><p>网上分析的文章有很多，但想着自己写一遍更加深了解。。。<br>首先它们都是通过 //char[] 来存储字符串的字符，其中String中的 //char[] 是final型的 所以String是不可变的，而StringBuffer和StringBuilder都是继承自AbstractStringBuilder，其字符串是可变的。<br>所以有常说的String不能修改，而要进行字符串的修改的话使用StringBuffer和StringBuilder，而StringBuffer和StringBuilder的区别在于线程安全区别，看源码可以知道StringBuffer和StringBuilder虽然基类都是AbstractStringBuilder且内部方法实现基本相同，但是区别在于，StringBuffer是线程安全的，其与StringBuilder的方法区别是他的方法都是sychronized的即线程同步的，所以在多线程中使用StringBuffer更加安全，而单线程中的话使用StringBuilder会更加高效。</p>
