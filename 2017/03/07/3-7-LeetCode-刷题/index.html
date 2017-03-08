@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="算法,LeetCode," />
+  <meta name="keywords" content="LeetCode,算法," />
 
 
 
@@ -86,16 +86,19 @@
 
 
 
-<meta name="description" content="ZigZagConversationhttps://leetcode.com/problems/zigzag-conversion/?tab=Description这个题首先明白什么是ZigZag pattern才能做，它是这样的格式/n=numRowsΔ=2n-2    1                           2n-1                         4n-3Δ=">
+<meta name="description" content="ZigZagConversationhttps://leetcode.com/problems/zigzag-conversion/?tab=Description这个题首先明白什么是ZigZag pattern才能做，它是这样的格式/*n=numRows
+Δ=2n-2    1                           2n-1                         4n-3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3.7-LeetCode-刷题">
 <meta property="og:url" content="http://wincber.com/2017/03/07/3-7-LeetCode-刷题/index.html">
 <meta property="og:site_name" content="wincber note">
-<meta property="og:description" content="ZigZagConversationhttps://leetcode.com/problems/zigzag-conversion/?tab=Description这个题首先明白什么是ZigZag pattern才能做，它是这样的格式/n=numRowsΔ=2n-2    1                           2n-1                         4n-3Δ=">
-<meta property="og:updated_time" content="2017-03-07T17:37:54.023Z">
+<meta property="og:description" content="ZigZagConversationhttps://leetcode.com/problems/zigzag-conversion/?tab=Description这个题首先明白什么是ZigZag pattern才能做，它是这样的格式/*n=numRows
+Δ=2n-2    1                           2n-1                         4n-3">
+<meta property="og:updated_time" content="2017-03-08T15:18:46.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3.7-LeetCode-刷题">
-<meta name="twitter:description" content="ZigZagConversationhttps://leetcode.com/problems/zigzag-conversion/?tab=Description这个题首先明白什么是ZigZag pattern才能做，它是这样的格式/n=numRowsΔ=2n-2    1                           2n-1                         4n-3Δ=">
+<meta name="twitter:description" content="ZigZagConversationhttps://leetcode.com/problems/zigzag-conversion/?tab=Description这个题首先明白什么是ZigZag pattern才能做，它是这样的格式/*n=numRows
+Δ=2n-2    1                           2n-1                         4n-3">
 
 
 
@@ -322,8 +325,15 @@
       
 
       
-        <h2 id="ZigZagConversation"><a href="#ZigZagConversation" class="headerlink" title="ZigZagConversation"></a>ZigZagConversation</h2><p><a href="https://leetcode.com/problems/zigzag-conversion/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/zigzag-conversion/?tab=Description</a><br>这个题首先明白什么是ZigZag pattern才能做，它是这样的格式<br>/<em>n=numRows<br>Δ=2n-2    1                           2n-1                         4n-3<br>Δ=        2                     2n-2  2n                    4n-4   4n-2<br>Δ=        3               2n-3        2n+1              4n-5       .<br>Δ=        .           .               .               .            .<br>Δ=        .       n+2                 .           3n               .<br>Δ=        n-1 n+1                     3n-3    3n-1                 5n-5<br>Δ=2n-2    n                           3n-2                         5n-4
-</em>/<br><a id="more"></a><br>这样就一目了然了，需要循环着从0-(numRows-1),再返回至0，还是比较简单的，直接代码</p>
+        <h2 id="ZigZagConversation"><a href="#ZigZagConversation" class="headerlink" title="ZigZagConversation"></a>ZigZagConversation</h2><p><a href="https://leetcode.com/problems/zigzag-conversion/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/zigzag-conversion/?tab=Description</a><br>这个题首先明白什么是ZigZag pattern才能做，它是这样的格式<br>/*n=numRows</p>
+<pre><code>Δ=2n-2    1                           2n-1                         4n-3
+Δ=        2                     2n-2  2n                    4n-4   4n-2
+Δ=        3               2n-3        2n+1              4n-5       .
+Δ=        .           .               .               .            .
+Δ=        .       n+2                 .           3n               .
+Δ=        n-1 n+1                     3n-3    3n-1                 5n-5
+Δ=2n-2    n                           3n-2                         5n-4
+</code></pre><p>*/<br><a id="more"></a><br>这样就一目了然了，需要循环着从0-(numRows-1),再返回至0，还是比较简单的，直接代码</p>
 <p>   public String convert(String s, int numRows) {<br>        StringBuilder[] sbs = new StringBuilder[numRows];<br>        for(int i = 0;i &lt; numRows;i++)<br>            sbs[i] = new StringBuilder();<br>        int len = s.length();<br>        int temp = 0;<br>        if(numRows == 1)<br>        sbs[0].append(s);<br>        else<br>        for(int i = 0,j = 0;i &lt; len;i++){<br>           if(j == numRows - 1) temp = -1;<br>           if(j == 0 &amp;&amp; i != 0 ) temp = 1;<br>           j += temp;<br>           sbs[j].append(s.charAt(i));<br>        }<br>        for(int i = 0;i &lt; numRows;i++){<br>            sbs[0].append(sbs[i]);<br>        }<br>        return sbs[0].toString();<br>    }</p>
 <p>需要注意的地方是，在0和numRows-1处的转折，这个题也让我测试得到了StringBuilder确实要比StringBuffer，前者61ms，后者67ms。</p>
 
@@ -348,9 +358,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/算法/" rel="tag">#算法</a>
-          
             <a href="/tags/LeetCode/" rel="tag">#LeetCode</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
           
         </div>
       
@@ -501,7 +511,7 @@
         
     
       </section>
-        <iframe width=86 height=86 scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/186978460&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+       <embed src="//music.163.com/style/swf/widget.swf?sid=623719617&type=2&auto=1&width=310&height=430" width="330" height="450"  allowNetworking="all"></embed>
       
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
