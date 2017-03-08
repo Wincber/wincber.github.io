@@ -1549,7 +1549,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffc6d6;
+  background: #ff2e4a;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2146,7 +2146,7 @@ body {
 .header {
   position: relative;
   margin: 0 auto;
-  width: 1100px;
+  width: 960px;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .header {
@@ -2163,7 +2163,7 @@ body {
   top: 0;
   overflow: hidden;
   padding: 0;
-  width: 300px;
+  width: 240px;
   background: #fff;
 }
 @media (min-width: 1600px) {
@@ -2262,7 +2262,7 @@ body {
 .footer-inner:before {
   content: " ";
   float: left;
-  width: 300px;
+  width: 260px;
   min-height: 50px;
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2393,7 +2393,7 @@ body {
 }
 .sidebar-inner {
   box-sizing: border-box;
-  width: 240px;
+  width: 300px;
   color: #555;
   background: #fff;
 }
