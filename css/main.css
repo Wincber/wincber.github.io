@@ -1549,7 +1549,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4000bd;
+  background: #bdff60;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2202,7 +2202,7 @@ body {
   }
 }
 .container .main-inner {
-  width: 960px;
+  width: 1100px;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .container .main-inner {
@@ -2239,7 +2239,7 @@ body {
   position: static;
   float: left;
   margin-top: 300px;
-  width: 340px;
+  width: 300px;
   background: #fff;
   box-shadow: none;
 }
@@ -2257,7 +2257,7 @@ body {
   display: none;
 }
 .footer-inner {
-  width: 960px;
+  width: 1100px;
 }
 .footer-inner:before {
   content: " ";
