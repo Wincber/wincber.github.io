@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java," />
 
 
 
@@ -86,15 +86,16 @@
 
 
 
-<meta name="description" content="simpliest is best.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wincber note">
-<meta property="og:url" content="http://wincber.com/tags/多线程/index.html">
+<meta name="description" content="学习Spring的Ioc（反转控制）时要先了解一些java的反射的基础知识。今天看了一部分，这里做个总结。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Spring3.x企业应用及开发实战》学习：Java反射知识(一)">
+<meta property="og:url" content="http://wincber.com/2017/03/15/Spring-学习：Java-反射知识-一/index.html">
 <meta property="og:site_name" content="wincber note">
-<meta property="og:description" content="simpliest is best.">
+<meta property="og:description" content="学习Spring的Ioc（反转控制）时要先了解一些java的反射的基础知识。今天看了一部分，这里做个总结。">
+<meta property="og:updated_time" content="2017-03-15T15:37:52.829Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wincber note">
-<meta name="twitter:description" content="simpliest is best.">
+<meta name="twitter:title" content="《Spring3.x企业应用及开发实战》学习：Java反射知识(一)">
+<meta name="twitter:description" content="学习Spring的Ioc（反转控制）时要先了解一些java的反射的基础知识。今天看了一部分，这里做个总结。">
 
 
 
@@ -115,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="http://wincber.com/tags/多线程/"/>
+  <link rel="canonical" href="http://wincber.com/2017/03/15/Spring-学习：Java-反射知识-一/"/>
 
-  <title> 标签: 多线程 | wincber note </title>
+  <title> 《Spring3.x企业应用及开发实战》学习：Java反射知识(一) | wincber note </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -147,7 +148,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,46 +249,154 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        多线程
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《Spring3.x企业应用及开发实战》学习：Java反射知识(一)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-15T23:13:10+08:00" content="2017-03-15">
+              2017-03-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/15/Spring-学习：Java-反射知识-一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/Spring-学习：Java-反射知识-一/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>学习Spring的Ioc（反转控制）时要先了解一些java的反射的基础知识。今天看了一部分，这里做个总结。<a id="more"></a><br>反射时通过对象获取所属类Class的结构信息，从而课一程序化方式操作Class对象。具体作用还是程序代码和配置文件的分离吧（虽然目前自己还没有体会出来）。<br>主要时测试了应用到了反射的一个例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class ReflectTest &#123;</div><div class="line">    public static Car initByDefaultConst() throws  Throwable&#123;</div><div class="line">        //类装载器ClassLoader获取Car类对象</div><div class="line">        ClassLoader loader = Thread.currentThread().getContextClassLoader();</div><div class="line">        Class clazz = loader.loadClass(&quot;com.wincber.SpringIoc.Car&quot;);</div><div class="line"></div><div class="line">        //获取累的默认构造器对象并通过它实例化对象。</div><div class="line">        Constructor constructor = clazz.getDeclaredConstructor((Class[])null);</div><div class="line">        Car car = (Car) constructor.newInstance();  //newInstance 作用相当于new XX</div><div class="line"></div><div class="line">        //通过反射方法设置属性</div><div class="line"></div><div class="line">        Method setBrand = clazz.getMethod(&quot;setBrand&quot;,String.class);</div><div class="line">        setBrand.invoke(car,&quot;劳斯莱斯&quot;);</div><div class="line">        Method setColor = clazz.getMethod(&quot;setColor&quot;,String.class);</div><div class="line">        setColor.invoke(car,&quot;红色&quot;);</div><div class="line">        Method setMaxSpeed = clazz.getMethod(&quot;setMaxSpeed&quot;,int.class);</div><div class="line">        setMaxSpeed.invoke(car,100);</div><div class="line">        return car;</div><div class="line">    &#125;</div><div class="line">    public static void main(String[] args) throws Throwable&#123;</div><div class="line">       Car car = initByDefaultConst();</div><div class="line">       car.introduce();</div><div class="line">       ClassLoader loader = Thread.currentThread().getContextClassLoader();</div><div class="line">       System.out.println(&quot;current loader &quot;+ loader);</div><div class="line">       System.out.println(&quot;parent loader &quot;+ loader.getParent());</div><div class="line">       System.out.println(&quot;grandParent loader &quot;+ loader.getParent().getParent());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>还有就是类装载器ClassLoader这一节的介绍里的一些知识：<br>类装载器把一个类装入JVM的过程：<br>    1.装载：查找和导入Class文件。<br>    2.链接：执行校验，准备和解析步骤（可选）<br>        a.校验：检查载入Class文件数据的正确性<br>        b.准备: 给类的静态变量分配存储空间<br>        c.解析: 将符号引用转成直接以用<br>    3.初始化: 对类的静态变量，静态代码块执行初始化工作。<br>其次还介绍了三个主要的ClassLoader: 根装载器，ExtClassLoader,AppClassLoader，挨个继承下来的。存在这样的机制也是因为JVM装载时使用“全盘负责委托机制”(总是先委托父装载器寻找目标类)，位的时避免类似于恶意基础类装载到JVM发生的错误。<br>最后放个图，java的内存模型：<br><a href="http://oczm2hjoz.bkt.clouddn.com/image/jpg/java_reflect.jpg" target="_blank" rel="external">!内存模型</a></p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/12/04/android服务器端与客户端Socket通信Demo/" itemprop="url">
-              
-                <span itemprop="name">android服务器端与客户端Socket通信Demo</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-04T01:13:53+08:00"
-              content="2016-12-04" >
-          12-04
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag">#java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/12/RxAndroid-初试/" rel="next" title="RxAndroid 初试">
+                <i class="fa fa-chevron-left"></i> RxAndroid 初试
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/03/15/Spring-学习：Java-反射知识-一/"
+     data-title="《Spring3.x企业应用及开发实战》学习：Java反射知识(一)"
+     data-content=""
+     data-url="http://wincber.com/2017/03/15/Spring-学习：Java-反射知识-一/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -295,6 +404,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/15/Spring-学习：Java-反射知识-一/"
+           data-title="《Spring3.x企业应用及开发实战》学习：Java反射知识(一)" data-url="http://wincber.com/2017/03/15/Spring-学习：Java-反射知识-一/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -314,8 +431,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/headportrait.png"
@@ -372,6 +498,17 @@
     
       </section>
       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=250 height=450 src="//music.163.com/outchain/player?type=0&id=623719617&auto=1&height=430"></iframe>
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
 
@@ -493,6 +630,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
