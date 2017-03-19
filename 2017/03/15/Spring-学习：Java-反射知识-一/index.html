@@ -92,7 +92,7 @@
 <meta property="og:url" content="http://wincber.com/2017/03/15/Spring-学习：Java-反射知识-一/index.html">
 <meta property="og:site_name" content="wincber note">
 <meta property="og:description" content="学习Spring的Ioc（反转控制）时要先了解一些java的反射的基础知识。今天看了一部分，这里做个总结。">
-<meta property="og:updated_time" content="2017-03-15T15:37:52.829Z">
+<meta property="og:updated_time" content="2017-03-18T09:10:36.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Spring3.x企业应用及开发实战》学习：Java反射知识(一)">
 <meta name="twitter:description" content="学习Spring的Ioc（反转控制）时要先了解一些java的反射的基础知识。今天看了一部分，这里做个总结。">
@@ -323,7 +323,8 @@
 
       
         <p>学习Spring的Ioc（反转控制）时要先了解一些java的反射的基础知识。今天看了一部分，这里做个总结。<a id="more"></a><br>反射时通过对象获取所属类Class的结构信息，从而课一程序化方式操作Class对象。具体作用还是程序代码和配置文件的分离吧（虽然目前自己还没有体会出来）。<br>主要时测试了应用到了反射的一个例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class ReflectTest &#123;</div><div class="line">    public static Car initByDefaultConst() throws  Throwable&#123;</div><div class="line">        //类装载器ClassLoader获取Car类对象</div><div class="line">        ClassLoader loader = Thread.currentThread().getContextClassLoader();</div><div class="line">        Class clazz = loader.loadClass(&quot;com.wincber.SpringIoc.Car&quot;);</div><div class="line"></div><div class="line">        //获取累的默认构造器对象并通过它实例化对象。</div><div class="line">        Constructor constructor = clazz.getDeclaredConstructor((Class[])null);</div><div class="line">        Car car = (Car) constructor.newInstance();  //newInstance 作用相当于new XX</div><div class="line"></div><div class="line">        //通过反射方法设置属性</div><div class="line"></div><div class="line">        Method setBrand = clazz.getMethod(&quot;setBrand&quot;,String.class);</div><div class="line">        setBrand.invoke(car,&quot;劳斯莱斯&quot;);</div><div class="line">        Method setColor = clazz.getMethod(&quot;setColor&quot;,String.class);</div><div class="line">        setColor.invoke(car,&quot;红色&quot;);</div><div class="line">        Method setMaxSpeed = clazz.getMethod(&quot;setMaxSpeed&quot;,int.class);</div><div class="line">        setMaxSpeed.invoke(car,100);</div><div class="line">        return car;</div><div class="line">    &#125;</div><div class="line">    public static void main(String[] args) throws Throwable&#123;</div><div class="line">       Car car = initByDefaultConst();</div><div class="line">       car.introduce();</div><div class="line">       ClassLoader loader = Thread.currentThread().getContextClassLoader();</div><div class="line">       System.out.println(&quot;current loader &quot;+ loader);</div><div class="line">       System.out.println(&quot;parent loader &quot;+ loader.getParent());</div><div class="line">       System.out.println(&quot;grandParent loader &quot;+ loader.getParent().getParent());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>还有就是类装载器ClassLoader这一节的介绍里的一些知识：<br>类装载器把一个类装入JVM的过程：<br>    1.装载：查找和导入Class文件。<br>    2.链接：执行校验，准备和解析步骤（可选）<br>        a.校验：检查载入Class文件数据的正确性<br>        b.准备: 给类的静态变量分配存储空间<br>        c.解析: 将符号引用转成直接以用<br>    3.初始化: 对类的静态变量，静态代码块执行初始化工作。<br>其次还介绍了三个主要的ClassLoader: 根装载器，ExtClassLoader,AppClassLoader，挨个继承下来的。存在这样的机制也是因为JVM装载时使用“全盘负责委托机制”(总是先委托父装载器寻找目标类)，位的时避免类似于恶意基础类装载到JVM发生的错误。<br>最后放个图，java的内存模型：<br><a href="http://oczm2hjoz.bkt.clouddn.com/image/jpg/java_reflect.jpg" target="_blank" rel="external">!内存模型</a></p>
+<p>还有就是类装载器ClassLoader这一节的介绍里的一些知识：<br>类装载器把一个类装入JVM的过程：<br>    1.装载：查找和导入Class文件。<br>    2.链接：执行校验，准备和解析步骤（可选）<br>        a.校验：检查载入Class文件数据的正确性<br>        b.准备: 给类的静态变量分配存储空间<br>        c.解析: 将符号引用转成直接以用<br>    3.初始化: 对类的静态变量，静态代码块执行初始化工作。<br>其次还介绍了三个主要的ClassLoader: 根装载器，ExtClassLoader,AppClassLoader，挨个继承下来的。存在这样的机制也是因为JVM装载时使用“全盘负责委托机制”(总是先委托父装载器寻找目标类)，位的时避免类似于恶意基础类装载到JVM发生的错误。<br>最后放个图，java的内存模型：</p>
+<p><a href="http://oczm2hjoz.bkt.clouddn.com/image/jpg/java_reflect.jpg" target="_blank" rel="external">!内存模型</a></p>
 
       
     </div>
@@ -362,6 +363,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/18/java-Set小结/" rel="prev" title="java-Set小结">
+                java-Set小结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -452,7 +457,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
