@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="android,问题," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="今天遇到了java.lang.StackOverflowError: stack size 8MB这个问题，如果你去直接差的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。不过就我遇到的问题来说它打印的日志还有：1System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState
+<meta name="description" content="今天遇到了java.lang.StackOverflowError: stack size 8MB这个问题，如果你去直接查的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。不过就我遇到的问题来说它打印的日志还有：1System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState
 我按照这">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记一 java.lang.StackOverflowError: stack size 8MB 错误">
 <meta property="og:url" content="http://wincber.com/2017/03/25/记一-java-lang-StackOverflowError-stack-size-8MB-错误/index.html">
 <meta property="og:site_name" content="wincber note">
-<meta property="og:description" content="今天遇到了java.lang.StackOverflowError: stack size 8MB这个问题，如果你去直接差的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。不过就我遇到的问题来说它打印的日志还有：1System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState
+<meta property="og:description" content="今天遇到了java.lang.StackOverflowError: stack size 8MB这个问题，如果你去直接查的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。不过就我遇到的问题来说它打印的日志还有：1System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState
 我按照这">
-<meta property="og:updated_time" content="2017-03-25T06:45:55.771Z">
+<meta property="og:updated_time" content="2017-03-25T06:49:39.153Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记一 java.lang.StackOverflowError: stack size 8MB 错误">
-<meta name="twitter:description" content="今天遇到了java.lang.StackOverflowError: stack size 8MB这个问题，如果你去直接差的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。不过就我遇到的问题来说它打印的日志还有：1System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState
+<meta name="twitter:description" content="今天遇到了java.lang.StackOverflowError: stack size 8MB这个问题，如果你去直接查的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。不过就我遇到的问题来说它打印的日志还有：1System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState
 我按照这">
 
 
@@ -325,7 +325,7 @@
       
 
       
-        <p>今天遇到了<strong>java.lang.StackOverflowError: stack size 8MB</strong>这个问题，如果你去直接差的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。<br>不过就我遇到的问题来说它打印的日志还有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState</div></pre></td></tr></table></figure></p>
+        <p>今天遇到了<strong>java.lang.StackOverflowError: stack size 8MB</strong>这个问题，如果你去直接查的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。<br>不过就我遇到的问题来说它打印的日志还有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState</div></pre></td></tr></table></figure></p>
 <p>我按照这个erro信息查了以后便发现了我的问题出现在了哪里。<br>因为我所做的是个ViewPager配套Fragment的布局，而在Fragment中onCreateView中我错误的使用了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">return inflater.inflate(R.layout.content_pager,container);</div></pre></td></tr></table></figure></p>
 <p>而就是因为第二个参数设置成了<strong>container</strong>,所以它会加载<strong>container</strong>（此时为<em>ViewPager</em>）作为根布局，一层层往底部某处就陷入死循环，最终崩溃。<br>所以第二个参数应改为null，即<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">return inflater.inflate(R.layout.content_pager,null);</div></pre></td></tr></table></figure></p>
 <p>至于哪里陷入了死循环，为什么陷入了，我尚且还没搞出来，但是是涉及ViewRoot的展示和线程之间的转换。所以也是寻求个帮助。</p>
@@ -348,6 +348,14 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag">#android</a>
+          
+            <a href="/tags/问题/" rel="tag">#问题</a>
+          
+        </div>
       
 
       
@@ -468,7 +476,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
