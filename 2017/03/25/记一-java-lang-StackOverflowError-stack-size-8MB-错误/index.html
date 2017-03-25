@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="simpliest is best.">
+<meta name="description" content="今天遇到了java.lang.StackOverflowError: stack size 8MB这个问题，如果你去直接差的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。不过就我遇到的问题来说它打印的日志还有：System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState我按照这个e">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring 开发初试">
-<meta property="og:url" content="http://wincber.com/2017/03/07/Spring-开发初试/index.html">
+<meta property="og:title" content="记一 java.lang.StackOverflowError: stack size 8MB 错误">
+<meta property="og:url" content="http://wincber.com/2017/03/25/记一-java-lang-StackOverflowError-stack-size-8MB-错误/index.html">
 <meta property="og:site_name" content="wincber note">
-<meta property="og:description" content="simpliest is best.">
-<meta property="og:updated_time" content="2017-03-07T09:51:55.874Z">
+<meta property="og:description" content="今天遇到了java.lang.StackOverflowError: stack size 8MB这个问题，如果你去直接差的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。不过就我遇到的问题来说它打印的日志还有：System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState我按照这个e">
+<meta property="og:updated_time" content="2017-03-25T06:37:02.694Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring 开发初试">
-<meta name="twitter:description" content="simpliest is best.">
+<meta name="twitter:title" content="记一 java.lang.StackOverflowError: stack size 8MB 错误">
+<meta name="twitter:description" content="今天遇到了java.lang.StackOverflowError: stack size 8MB这个问题，如果你去直接差的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。不过就我遇到的问题来说它打印的日志还有：System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState我按照这个e">
 
 
 
@@ -116,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="http://wincber.com/2017/03/07/Spring-开发初试/"/>
+  <link rel="canonical" href="http://wincber.com/2017/03/25/记一-java-lang-StackOverflowError-stack-size-8MB-错误/"/>
 
-  <title> Spring 开发初试 | wincber note </title>
+  <title> 记一 java.lang.StackOverflowError: stack size 8MB 错误 | wincber note </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +270,7 @@
             
             
               
-                Spring 开发初试
+                记一 java.lang.StackOverflowError: stack size 8MB 错误
               
             
           </h1>
@@ -282,8 +282,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-07T17:51:55+08:00" content="2017-03-07">
-              2017-03-07
+            <time itemprop="dateCreated" datetime="2017-03-25T13:59:37+08:00" content="2017-03-25">
+              2017-03-25
             </time>
           </span>
 
@@ -293,8 +293,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/03/07/Spring-开发初试/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/Spring-开发初试/" itemprop="commentsCount"></span>
+                <a href="/2017/03/25/记一-java-lang-StackOverflowError-stack-size-8MB-错误/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/25/记一-java-lang-StackOverflowError-stack-size-8MB-错误/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -322,7 +322,8 @@
       
 
       
-        
+        <p>今天遇到了java.lang.StackOverflowError: stack size 8MB这个问题，如果你去直接差的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。<br>不过就我遇到的问题来说它打印的日志还有：System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState<br>我按照这个erro信息查了以后便发现了我的问题出现在了哪里。<br>因为我所做的是个ViewPager配套Fragment的布局，而在Fragment中onCreateView中我错误的使用了<br>    return inflater.inflate(R.layout.content_pager,container);<br>而就是因为第二个参数设置成了container,所以它会加载container（此时为ViewPager）作为根布局，一层层往底部某处就陷入死循环，最终崩溃。<br>所以第二个参数应改为null，即<br>    return inflater.inflate(R.layout.content_pager,null);<br>至于哪里陷入了死循环，为什么陷入了，我尚且还没搞出来，但是是涉及ViewRoot的展示和线程之间的转换。所以也是寻求个帮助。</p>
+
       
     </div>
 
@@ -347,17 +348,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/07/Retrofit-Android-初试/" rel="next" title="Retrofit Android 初试">
-                <i class="fa fa-chevron-left"></i> Retrofit Android 初试
+              <a href="/2017/03/18/java-Set小结/" rel="next" title="java-Set小结">
+                <i class="fa fa-chevron-left"></i> java-Set小结
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/07/3-7-LeetCode-刷题/" rel="prev" title="3.7-LeetCode-刷题">
-                3.7-LeetCode-刷题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -372,10 +369,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/03/07/Spring-开发初试/"
-     data-title="Spring 开发初试"
+        <div class="ds-share flat" data-thread-key="2017/03/25/记一-java-lang-StackOverflowError-stack-size-8MB-错误/"
+     data-title="记一 java.lang.StackOverflowError: stack size 8MB 错误"
      data-content=""
-     data-url="http://wincber.com/2017/03/07/Spring-开发初试/">
+     data-url="http://wincber.com/2017/03/25/记一-java-lang-StackOverflowError-stack-size-8MB-错误/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -402,8 +399,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/07/Spring-开发初试/"
-           data-title="Spring 开发初试" data-url="http://wincber.com/2017/03/07/Spring-开发初试/">
+      <div class="ds-thread" data-thread-key="2017/03/25/记一-java-lang-StackOverflowError-stack-size-8MB-错误/"
+           data-title="记一 java.lang.StackOverflowError: stack size 8MB 错误" data-url="http://wincber.com/2017/03/25/记一-java-lang-StackOverflowError-stack-size-8MB-错误/">
       </div>
     
   </div>

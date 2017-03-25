@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java,集合," />
 
 
 
@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="simpliest is best.">
+<meta name="description" content="SetSet也是继承自Collection的接口，与List不同的是他不允许有重复的元素存在，并允许存储null元素（最多一个）。它的API主要有1234567891011121314int size();         返回Set的大小boolean empty();    返回是否为空boolean contains(Object o);     是否包含对象oIterator&amp;lt;E&amp;g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java-Set小结">
 <meta property="og:url" content="http://wincber.com/2017/03/18/java-Set小结/index.html">
 <meta property="og:site_name" content="wincber note">
-<meta property="og:description" content="simpliest is best.">
-<meta property="og:updated_time" content="2017-03-18T09:39:20.571Z">
+<meta property="og:description" content="SetSet也是继承自Collection的接口，与List不同的是他不允许有重复的元素存在，并允许存储null元素（最多一个）。它的API主要有1234567891011121314int size();         返回Set的大小boolean empty();    返回是否为空boolean contains(Object o);     是否包含对象oIterator&amp;lt;E&amp;g">
+<meta property="og:updated_time" content="2017-03-21T08:59:45.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java-Set小结">
-<meta name="twitter:description" content="simpliest is best.">
+<meta name="twitter:description" content="SetSet也是继承自Collection的接口，与List不同的是他不允许有重复的元素存在，并允许存储null元素（最多一个）。它的API主要有1234567891011121314int size();         返回Set的大小boolean empty();    返回是否为空boolean contains(Object o);     是否包含对象oIterator&amp;lt;E&amp;g">
 
 
 
@@ -322,7 +322,12 @@
       
 
       
-        
+        <h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h1><p>Set也是继承自Collection的接口，与List不同的是他不允许有重复的元素存在，并允许存储null元素（最多一个）。它的API主要有<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">int size();         返回Set的大小</div><div class="line">boolean empty();    返回是否为空</div><div class="line">boolean contains(Object o);     是否包含对象o</div><div class="line">Iterator&lt;E&gt; iterator();     返回此集合的迭代器</div><div class="line">&lt;T&gt;T[] toArray(T[] a);      转化为数组</div><div class="line">boolean add(Object o);      添加对象o</div><div class="line">boolean remove(Object o);   移除对象o</div><div class="line">boolean containsAll(Collection&lt;?&gt; c);       是否包含c集合</div><div class="line">boolean addAll(Collection&lt;? extends E&gt; c);  添加c到此set中</div><div class="line">boolean retainAll(Collection&lt;?&gt; c);     保留c 移除c以外的元素</div><div class="line">boolean removeAll(Collection&lt;?&gt; c);     移除set中的c集合</div><div class="line">void clear();   清空集合</div><div class="line">boolean equals(Object o);       与o是否相等</div><div class="line">int hashCode();     返回hashCode</div></pre></td></tr></table></figure></p>
+<h2 id="AbstractSet"><a href="#AbstractSet" class="headerlink" title="AbstractSet"></a>AbstractSet</h2><p>AbstractSet实现了Set中的主要方法，作为抽象类为下面的类做基类。它的方法主要有<br>实现方法有:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">boolean equals(Object o);   比较两者是否相等。比较过程o的类的类型，o的size，o的内容与本set是否相同</div><div class="line">int hashCode();    返回hashCode，一个set的hashCode等于所有元素的hashCode之和</div><div class="line">boolean removeAll(Collection&lt;?&gt; c)  移除c。先要比较size的大小，在通过迭代器删除元素。</div></pre></td></tr></table></figure></p>
+<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>HashSet继承自AbstractSet,它的内部其实是HashMap<br>它的重要变量:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">private transient HashMap&lt;E,Object&gt; map;    HashSet内部其实是通过HashMap来操作</div><div class="line">private static final Object PRESENT = new Object();</div></pre></td></tr></table></figure></p>
+<p>构造方法:<br>    public HashSet(){map = new HashMap&lt;&gt;();}<br>    public HashSet(Collection&lt;? extends E&gt; c) {map = new HashMap&lt;&gt;(Math.max((int)(c.size()/0.75f),16))}<br>    public HashSet(int initialCapacity,int loadFactor){map = new HashMap&lt;&gt;(initialCapacity,loadFactor);}<br>    public HashSet(int initialCapacity){map = new HashMap&lt;&gt;(initialCapacity);}<br>而Set接口的方法的实现都是对map的操作。</p>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p>同样，TreeSet内部方法也是对Map接口的API进行了实现，而内部实现的过程也是通过NavigableTree的操作与HashSet的方法相似,但是他也有许多自己的方法，有着Tree特点的方法</p>
+
       
     </div>
 
@@ -342,6 +347,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag">#java</a>
+          
+            <a href="/tags/集合/" rel="tag">#集合</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
@@ -354,6 +367,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/25/记一-java-lang-StackOverflowError-stack-size-8MB-错误/" rel="prev" title="记一 java.lang.StackOverflowError: stack size 8MB 错误">
+                记一 java.lang.StackOverflowError: stack size 8MB 错误 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -444,7 +461,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -461,7 +478,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -497,7 +514,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Set"><span class="nav-number">1.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AbstractSet"><span class="nav-number">1.1.</span> <span class="nav-text">AbstractSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet"><span class="nav-number">1.1.1.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeSet"><span class="nav-number">1.1.2.</span> <span class="nav-text">TreeSet</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
