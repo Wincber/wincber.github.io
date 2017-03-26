@@ -86,15 +86,15 @@
 
 
 
-<meta name="description" content="simpliest is best.">
+<meta name="description" content="El psy congroo ！呜哈哈哈">
 <meta property="og:type" content="website">
 <meta property="og:title" content="wincber note">
 <meta property="og:url" content="http://wincber.com/page/2/index.html">
 <meta property="og:site_name" content="wincber note">
-<meta property="og:description" content="simpliest is best.">
+<meta property="og:description" content="El psy congroo ！呜哈哈哈">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wincber note">
-<meta name="twitter:description" content="simpliest is best.">
+<meta name="twitter:description" content="El psy congroo ！呜哈哈哈">
 
 
 
@@ -250,6 +250,174 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/06/3-5-LeetCode-刷题/" itemprop="url">
+                  3.5 LeetCode 刷题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-06T22:40:34+08:00" content="2017-03-06">
+              2017-03-06
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/06/3-5-LeetCode-刷题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/06/3-5-LeetCode-刷题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>算法一直不咋地，决定要开始刷一刷算法，每天在LeetCode上做两三道，希望可以做到吧，本着买了就当看了的心态，还买了算法导论。（提前声明，这种算法文章都是我自己刷算法的笔记体会，算法大神不要吐槽，当然欢迎指导）。<br>不扯淡了，今天只做了三道算法题，都是Easy级别的（T_T），不过慢慢积累嘛，就说说这三道。</p>
+<h2 id="TwoSum"><a href="#TwoSum" class="headerlink" title="TwoSum"></a>TwoSum</h2><p><a href="https://leetcode.com/problems/two-sum/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/two-sum/?tab=Description</a></p>
+<p>题目就不说了，这个考的是HashMap的知识（Java中是HashMap，C++的话用Vector），都是利用他们的键值快速查找来解题。<br>这也是巧妙地一点，将值作为Key，索引作为Value，因为Key的查找是快速查找，HashMap中的containsKey(key)中又是利用getNode(hash,key)方法实现，内部实现是利用链表的顺序查找实现。<br>所以我提交的是</p>
+<pre><code>public class TwoSum {
+public static void main(String[] args){
+    TwoSum  ts = new TwoSum();
+    int []x = {2,7,11,12,15};
+    int []res = ts.twoSum(x,14);
+    for(int i = 0;i &lt; res.length;i++){
+        System.out.println(i == res.length-1?res[i]:res[i]);
+    }
+}
+
+/**
+ * 考点：Array HashTable
+ * HashMap是O(n) Time，O(n) Space,HashMap查找key时是快速查找，所以用索引做value，用值做key进行存储。
+ * @param x
+ * @param target
+ * @return
+ */
+public int[] twoSum(int []x,int target){
+    Map&lt;Integer,Integer&gt; map = new HashMap&lt;Integer,Integer&gt;();
+    for(int i = 0;i &lt; x.length;i++){
+        map.put(x[i],i);
+    }
+    for(int i = 0;i &lt; x.length;i++){
+        int result = target - x[i];
+        if(map.containsKey(result) &amp;&amp; i != map.get(result)){
+            return new int[]{i+1,map.get(result)+1};
+        }
+    }
+    return null;
+}
+</code></pre><p>}</p>
+<h2 id="HammingDistance"><a href="#HammingDistance" class="headerlink" title="HammingDistance"></a>HammingDistance</h2><p><a href="https://leetcode.com/problems/hamming-distance/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/hamming-distance/?tab=Description</a></p>
+<p>这道题很简单，我用的是位运算，将两个二进制数中的1通过异或放在同一个二进制数，在通过移位进行距离的计算。<br>Solution:</p>
+<pre><code>public class HammingDistance {
+public static void main(String[] args){
+    HammingDistance distance = new HammingDistance();
+    System.out.println(&quot;Distance: &quot;+ distance.hammingDistance(1,5));
+}
+public  int hammingDistance(int x, int y){
+    int result = x ^ y;
+    int dis = 0;
+    while(result!= 0){
+        if(result % 2 != 0)
+            dis++;
+        result = result &gt;&gt; 1;
+    }
+    return dis;
+}
+</code></pre><p>}</p>
+<h2 id="NumberComplement"><a href="#NumberComplement" class="headerlink" title="NumberComplement"></a>NumberComplement</h2><p><a href="https://leetcode.com/problems/number-complement/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/number-complement/?tab=Description</a></p>
+<p>这道题也不难，不过我提交失败了好几次，主要是没有考虑周全。要求一个二进制中的0和1互换后的数，刚开始我还考虑了好几种情况，事实证明想多了，我的做法简单来说，因为不以0开头，所以相当于取一位数判断0,1，再进行移位。感觉说的有点不清楚，代码一看就明白</p>
+<pre><code>public class NumberComplement {
+public static void main(String[] args){
+    NumberComplement num = new NumberComplement();
+    System.out.println(&quot;Complement is &quot; + num.findComplement(4));
+}
+public int findComplement(int num){
+    int result = 0;
+    for(int i = 0; num != 0;i++,num=num&gt;&gt;1){
+        result += (num%2==0?1:0)&lt;&lt;i;
+    }
+    return result;
+}
+</code></pre><p>}</p>
+<p>才第一天，从简单的开始，继续加油！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -1476,114 +1644,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/02/hello-world/" itemprop="url">
-                  Hello Blog
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-02T18:56:52+08:00" content="2016-09-02">
-              2016-09-02
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/02/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/02/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Welcome to my Blog !今天起开始好好的在这里写一些自己在学习过程中遇到的一些我所认为的重要的东西<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/02/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1616,15 +1681,15 @@
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/headportrait.png"
+               src="/images/headportrait.jpg"
                alt="wincber" />
           <p class="site-author-name" itemprop="name">wincber</p>
-          <p class="site-description motion-element" itemprop="description">simpliest is best.</p>
+          <p class="site-description motion-element" itemprop="description">El psy congroo ！呜哈哈哈</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1669,7 +1734,7 @@
         
     
       </section>
-      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=250 height=450 src="//music.163.com/outchain/player?type=0&id=623719617&auto=1&height=430"></iframe>
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=250 height=450 src="//music.163.com/outchain/player?type=0&id=623719617&auto=0&height=430"></iframe>
       
 
 
