@@ -272,8 +272,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/26/studyjam2/" itemprop="url">
-                  未命名
+                <a class="post-title-link" href="/2017/06/17/在VSCode中编写Kotlin/" itemprop="url">
+                  在VSCode中编写Kotlin
                 </a>
               
             
@@ -286,8 +286,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-26T17:35:16+08:00" content="2017-03-26">
-              2017-03-26
+            <time itemprop="dateCreated" datetime="2017-06-17T00:54:18+08:00" content="2017-06-17">
+              2017-06-17
             </time>
           </span>
 
@@ -297,8 +297,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/03/26/studyjam2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/26/studyjam2/" itemprop="commentsCount"></span>
+                <a href="/2017/06/17/在VSCode中编写Kotlin/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/17/在VSCode中编写Kotlin/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -323,25 +323,130 @@
       
         
           
-            <p>本章节主要讲的是布局<br>以前听过一个笑话，搞Android的十万行代码，九万行都是布局代码<br>虽然是个笑话但也能看出布局在开发过程中的重要性。</p>
-<ol>
-<li>ViewGroup<br>ViewGroup实际上是继承自View<br>根布局只能有一个<br>ViewGroup也是继承自View<br>LinearLayout必须指定布局的方向horizontal或者vertical<br>RelativeLayout 既可以relative to parent 也可以relative to otherChildren</li>
-<li><p>LinearLayout<br>首先还是注意XML中的标签闭合问题<br><a href="LinearLayout
-xmlns:android=“http://schemas.android.com/apk/res/android”
-android:orientation=&quot;vertical&quot;
-android:layout_width=&quot;match_parent&quot;
-android:layout_height=&quot;match_parent&quot;">LinearLayout
-xmlns:android=“http://schemas.android.com/apk/res/android”
-android:orientation=&quot;vertical&quot;
-android:layout_width=&quot;match_parent&quot;
-android:layout_height=&quot;match_parent&quot;</a><br> &lt;子View/&gt;<br><br>xmlns:android=“<a href="http://schemas.android.com/apk/res/android”" target="_blank" rel="external">http://schemas.android.com/apk/res/android”</a> 是android的命名空间<br>也可以自己制定命名空间或者使用其他的命名空间,例如在CardView中有<br>xmlns:card_view命名空间，使用card_view:属性来设置CardView中的View属性<br>其次是layout_width、layout_height的属性设置wrap_content,match_parent或是指定dp值<br>他们是由父视图组决定其的大小和位置的。<br>layout_weight会按比例将布局方向上的长度分给设置layout_weight的各子view，此时layout_width(布局方向为horizontal时)数值会无效，layout_height同理，而当layout_weight为0时（不设置的话它默认也是0），会保持wrap_content的大小<br>不过这里发现了Android Visualizer的一个bug</p>
-</li>
-<li><p>RelativeLayout<br>RelativeLayout顾名思义相对布局，可以让我们更好的根据View与View间的关系安排出我们想要的布局效果。它主要有相对父View布局，和相对兄弟View布局。若我们不指定他的具体布局位置，默认情况下它会出现在左上角，并叠加在一块<br>关于id，要保证id的独特性。@+id和@id的区别在于+意味着新创建一个id，而没有+则意味着这个id已存在，我们要引用这个</p>
-</li>
-<li><p>padding和margin<br>padding和margin的区别一句话就说明白了，padding是为当前View所调用，margin是由父View所调用，一个内在，一个外在。<br>android:padding和android:layout_margin都是对上下左右同时设置的，若想要单独设置就要android:padding_left、android:layout_margin_left这样一个一个属性设置。<br>MaterialDesign建议padding或margin值为8dp的倍数，因为一个方格是8dp</p>
-</li>
-</ol>
+            <pre><code>## 前言
+Kotlin~~~最近可能最常听到的大概就是这个了吧。Kotlin的官方编译器当然是IDEA，但是IDEA那么大，又不能同时编译java和kotlin两个项目，还贼吃内存，所以我就用VSCode来学习Kotlin。
+## 配置Kotlin环境
+如果你的IDEA版本比较新，或者之前用IDEA创建过或者写过Kotlin的话你就可以在IDEA的目录下找到plugins/Kotlin/kotlinc这个文件夹
+将kotlinc/bin配置到环境变量中（你可以单独复制这个文件夹到便捷的地方）。
+就像这样
+[!配置环境变量](http://oczm2hjoz.bkt.clouddn.com/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.jpg)
 
+这样你就可以在控制台里编写kotlin并编译运行了，like this
+[!控制台输出](http://oczm2hjoz.bkt.clouddn.com/%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA.png)
+
+## 配置VsCode
+在VSCode扩展中我安装了Kotlin Language 和 Code Runner这两个扩展包
+[!VSCode扩展](http://oczm2hjoz.bkt.clouddn.com/VSCode%E6%89%A9%E5%B1%95.png)
+
+安装后重启加载扩展，就可以编写Kotlin代码并编译运行了，写好代码，Ctrl+Alt+N,OK，像这样
+[!运行结果](http://oczm2hjoz.bkt.clouddn.com/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
+
+并且在你的程序文件目录下会生成一个该程序的Jar包，像这样
+[!jar包](http://oczm2hjoz.bkt.clouddn.com/%E7%94%9F%E6%88%90jar%E5%8C%85.png)
+
+## 总结
+就是这样，一起学习Kotlin吧，Enjoy Your Code！
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/12/Android内存泄漏文章读后感/" itemprop="url">
+                  Android内存泄漏文章读后感
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-12T22:57:35+08:00" content="2017-04-12">
+              2017-04-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/12/Android内存泄漏文章读后感/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/12/Android内存泄漏文章读后感/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
           
         
       
@@ -1207,109 +1312,6 @@ android:layout_height=&quot;match_parent&quot;</a><br> &lt;子View/&gt;<br><br>x
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/07/Android-MVP-初试/" itemprop="url">
-                  Android MVP 初试
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-07T17:50:39+08:00" content="2017-03-07">
-              2017-03-07
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/07/Android-MVP-初试/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/Android-MVP-初试/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>即将要做微社区的开发，用友盟的微社区SDK开发，要用到MVP架构,就学习一下MVP架构，看着张小龙的那个MVP的文章来学着写个Demo。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/07/Android-MVP-初试/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1355,7 +1357,7 @@ android:layout_height=&quot;match_parent&quot;</a><br> &lt;子View/&gt;<br><br>x
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1372,7 +1374,7 @@ android:layout_height=&quot;match_parent&quot;</a><br> &lt;子View/&gt;<br><br>x
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
