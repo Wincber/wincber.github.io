@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Anddroid,MultiDex," />
 
 
 
@@ -86,15 +86,25 @@
 
 
 
-<meta name="description" content="El psy congroo ！呜哈哈哈">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wincber note">
-<meta property="og:url" content="http://wincber.com/tags/多线程/index.html">
+<meta name="description" content="前言  最近项目测试阶段，app在Android4.x上打开直接崩溃，我也很崩溃，看log日志，发现是因为环信部分的错误，鼓捣了好久才终于解决（但估计兼容问题后续肯定还有很多问题T_T）
+方案怎么说，开门见山，先直接说解决方案
+1231.检查环信的初始化2.检查MultiDex配置3.检查混淆文件
+实际上我不是按照这个步骤来的，所以耗时耗力耗精神，因为我看log日志文件所报的错误就像题目Can n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一集成环信所遇到Could not find Class ..&NoClassDefError错误（Android4.x机）">
+<meta property="og:url" content="http://wincber.com/2017/07/14/记一集成环信所遇到Could-not-find-Class-NoClassDefError错误/index.html">
 <meta property="og:site_name" content="wincber note">
-<meta property="og:description" content="El psy congroo ！呜哈哈哈">
+<meta property="og:description" content="前言  最近项目测试阶段，app在Android4.x上打开直接崩溃，我也很崩溃，看log日志，发现是因为环信部分的错误，鼓捣了好久才终于解决（但估计兼容问题后续肯定还有很多问题T_T）
+方案怎么说，开门见山，先直接说解决方案
+1231.检查环信的初始化2.检查MultiDex配置3.检查混淆文件
+实际上我不是按照这个步骤来的，所以耗时耗力耗精神，因为我看log日志文件所报的错误就像题目Can n">
+<meta property="og:updated_time" content="2017-07-17T02:06:09.522Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wincber note">
-<meta name="twitter:description" content="El psy congroo ！呜哈哈哈">
+<meta name="twitter:title" content="记一集成环信所遇到Could not find Class ..&NoClassDefError错误（Android4.x机）">
+<meta name="twitter:description" content="前言  最近项目测试阶段，app在Android4.x上打开直接崩溃，我也很崩溃，看log日志，发现是因为环信部分的错误，鼓捣了好久才终于解决（但估计兼容问题后续肯定还有很多问题T_T）
+方案怎么说，开门见山，先直接说解决方案
+1231.检查环信的初始化2.检查MultiDex配置3.检查混淆文件
+实际上我不是按照这个步骤来的，所以耗时耗力耗精神，因为我看log日志文件所报的错误就像题目Can n">
 
 
 
@@ -115,9 +125,9 @@
 
 
 
-  <link rel="canonical" href="http://wincber.com/tags/多线程/"/>
+  <link rel="canonical" href="http://wincber.com/2017/07/14/记一集成环信所遇到Could-not-find-Class-NoClassDefError错误/"/>
 
-  <title> 标签: 多线程 | wincber note </title>
+  <title> 记一集成环信所遇到Could not find Class ..&NoClassDefError错误（Android4.x机） | wincber note </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -147,7 +157,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,46 +258,145 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        多线程
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                记一集成环信所遇到Could not find Class ..&NoClassDefError错误（Android4.x机）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-14T11:49:14+08:00" content="2017-07-14">
+              2017-07-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/07/14/记一集成环信所遇到Could-not-find-Class-NoClassDefError错误/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/14/记一集成环信所遇到Could-not-find-Class-NoClassDefError错误/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  最近项目测试阶段，app在Android4.x上打开直接崩溃，我也很崩溃，看log日志，发现是因为环信部分的错误，鼓捣了好久才终于解决（但估计兼容问题后续肯定还有很多问题T_T）</p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><pre><code>怎么说，开门见山，先直接说解决方案
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.检查环信的初始化</div><div class="line">2.检查MultiDex配置</div><div class="line">3.检查混淆文件</div></pre></td></tr></table></figure>
+</code></pre><p>实际上我不是按照这个步骤来的，所以耗时耗力耗精神，因为我看log日志文件所报的错误就像题目<strong>Can not find class……</strong>，就是说我的环信包下的类找不到。<br>因为我的项目依赖了EaseUI模块，所以环信sdk是在EaseUI模块中的，而环信sdk的初始话要放在我app的Application中，即要用到EaseUI中的sdk，而在Android4.x手机上运行时就显示找不到这个类，所以初始化失败所以就崩了。<br>我排查了很多问题，觉得最主要要做好的是前两点。</p>
+<h3 id="检查环信的初始化"><a href="#检查环信的初始化" class="headerlink" title="检查环信的初始化"></a>检查环信的初始化</h3><p>我在排查的末阶段才发现这个问题，真是stupid。<br>什么问题呢？就是我的环信sdk初始化了两次，我的环信模块是按demo中的写的，所以在helper中就会初始化easeui（看过demo文件你就知道了），而<strong>EaseUI.getInstan().init(context,options)</strong>中就对环信sdk初始化了，所以如果你在之前或者之后在还初始化了环信sdk，即<strong>EMClient.getInstance().init(context,options)</strong>，就会出问题。</p>
+<p>重复初始话sdk要出问题也是官方文档中特意说明的。要注意这一点。</p>
+<h3 id="检查MultiDex配置"><a href="#检查MultiDex配置" class="headerlink" title="检查MultiDex配置"></a>检查MultiDex配置</h3><p>集成环信会用到MultiDex来避免64k方法（你肯定也用到了），所以务必检查MultiDex的初始化，主要是两点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.你的Application继承自MultiDexApplication</div><div class="line">2.MultiDex.install()</div></pre></td></tr></table></figure></p>
+<p>具体的使用方法就不说了，随便插一下你就知道。</p>
+<h3 id="检查混淆文件"><a href="#检查混淆文件" class="headerlink" title="检查混淆文件"></a>检查混淆文件</h3><p>其实这一步不是非常必要的，但是有可能会出现这一点，我刚开始一直以为是这样里的问题，后来发现其实是前两点的问题<br>不过混淆文件也要注意一下对于keep 和dontwarn的使用，但是其实对于环信部分的混淆，你把demo中的混淆文件中的内容拷贝过来就可以了，大体不用改什么。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说，出了问题，首先看前两点，我这次也是长了教训，不过Android5.0以上又没问题，这个就很奇怪，但是按标准来是没问题的，不要先找混淆文件的问题！不要先找混淆文件的问题！不要先找混淆文件的问题！重要的话说三遍。这次确实是log日志把我坑了，大家也要想的广一点，不一定要纠结于log上所展现的问题，有时候他不是问题的本质所在。<br>继续加油！！</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/12/04/android服务器端与客户端Socket通信Demo/" itemprop="url">
-              
-                <span itemprop="name">android服务器端与客户端Socket通信Demo</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-04T01:13:53+08:00"
-              content="2016-12-04" >
-          12-04
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Anddroid/" rel="tag">#Anddroid</a>
+          
+            <a href="/tags/MultiDex/" rel="tag">#MultiDex</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/07/Fragment在可见时刷新加载数据/" rel="next" title="Fragment在可见时刷新加载数据">
+                <i class="fa fa-chevron-left"></i> Fragment在可见时刷新加载数据
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -295,6 +404,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -314,8 +434,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/headportrait.jpg"
@@ -372,6 +501,17 @@
     
       </section>
       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=250 height=450 src="//music.163.com/outchain/player?type=0&id=623719617&auto=0&height=430"></iframe>
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案"><span class="nav-number">2.</span> <span class="nav-text">方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#检查环信的初始化"><span class="nav-number">2.1.</span> <span class="nav-text">检查环信的初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查MultiDex配置"><span class="nav-number">2.2.</span> <span class="nav-text">检查MultiDex配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查混淆文件"><span class="nav-number">2.3.</span> <span class="nav-text">检查混淆文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
 
@@ -493,6 +633,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
@@ -509,9 +653,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'wincber';
-      var disqus_identifier = 'tags/多线程/index.html';
-      var disqus_title = "";
-      var disqus_url = '';
+      var disqus_identifier = '2017/07/14/记一集成环信所遇到Could-not-find-Class-NoClassDefError错误/';
+      var disqus_title = "记一集成环信所遇到Could not find Class ..&NoClassDefError错误（Android4.x机）";
+      var disqus_url = 'http://wincber.com/2017/07/14/记一集成环信所遇到Could-not-find-Class-NoClassDefError错误/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
@@ -522,6 +666,8 @@
       }
 
       run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
       
     </script>
   

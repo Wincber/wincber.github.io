@@ -272,6 +272,116 @@
             
               
                 
+                <a class="post-title-link" href="/2017/07/14/记一集成环信所遇到Could-not-find-Class-NoClassDefError错误/" itemprop="url">
+                  记一集成环信所遇到Could not find Class ..&NoClassDefError错误（Android4.x机）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-14T11:49:14+08:00" content="2017-07-14">
+              2017-07-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/07/14/记一集成环信所遇到Could-not-find-Class-NoClassDefError错误/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/14/记一集成环信所遇到Could-not-find-Class-NoClassDefError错误/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  最近项目测试阶段，app在Android4.x上打开直接崩溃，我也很崩溃，看log日志，发现是因为环信部分的错误，鼓捣了好久才终于解决（但估计兼容问题后续肯定还有很多问题T_T）</p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><pre><code>怎么说，开门见山，先直接说解决方案
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.检查环信的初始化</div><div class="line">2.检查MultiDex配置</div><div class="line">3.检查混淆文件</div></pre></td></tr></table></figure>
+</code></pre><p>实际上我不是按照这个步骤来的，所以耗时耗力耗精神，因为我看log日志文件所报的错误就像题目<strong>Can not find class……</strong>，就是说我的环信包下的类找不到。<br>因为我的项目依赖了EaseUI模块，所以环信sdk是在EaseUI模块中的，而环信sdk的初始话要放在我app的Application中，即要用到EaseUI中的sdk，而在Android4.x手机上运行时就显示找不到这个类，所以初始化失败所以就崩了。<br>我排查了很多问题，觉得最主要要做好的是前两点。</p>
+<h3 id="检查环信的初始化"><a href="#检查环信的初始化" class="headerlink" title="检查环信的初始化"></a>检查环信的初始化</h3><p>我在排查的末阶段才发现这个问题，真是stupid。<br>什么问题呢？就是我的环信sdk初始化了两次，我的环信模块是按demo中的写的，所以在helper中就会初始化easeui（看过demo文件你就知道了），而<strong>EaseUI.getInstan().init(context,options)</strong>中就对环信sdk初始化了，所以如果你在之前或者之后在还初始化了环信sdk，即<strong>EMClient.getInstance().init(context,options)</strong>，就会出问题。</p>
+<p>重复初始话sdk要出问题也是官方文档中特意说明的。要注意这一点。</p>
+<h3 id="检查MultiDex配置"><a href="#检查MultiDex配置" class="headerlink" title="检查MultiDex配置"></a>检查MultiDex配置</h3><p>集成环信会用到MultiDex来避免64k方法（你肯定也用到了），所以务必检查MultiDex的初始化，主要是两点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.你的Application继承自MultiDexApplication</div><div class="line">2.MultiDex.install()</div></pre></td></tr></table></figure></p>
+<p>具体的使用方法就不说了，随便插一下你就知道。</p>
+<h3 id="检查混淆文件"><a href="#检查混淆文件" class="headerlink" title="检查混淆文件"></a>检查混淆文件</h3><p>其实这一步不是非常必要的，但是有可能会出现这一点，我刚开始一直以为是这样里的问题，后来发现其实是前两点的问题<br>不过混淆文件也要注意一下对于keep 和dontwarn的使用，但是其实对于环信部分的混淆，你把demo中的混淆文件中的内容拷贝过来就可以了，大体不用改什么。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说，出了问题，首先看前两点，我这次也是长了教训，不过Android5.0以上又没问题，这个就很奇怪，但是按标准来是没问题的，不要先找混淆文件的问题！不要先找混淆文件的问题！不要先找混淆文件的问题！重要的话说三遍。这次确实是log日志把我坑了，大家也要想的广一点，不一定要纠结于log上所展现的问题，有时候他不是问题的本质所在。<br>继续加油！！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/07/07/Fragment在可见时刷新加载数据/" itemprop="url">
                   Fragment在可见时刷新加载数据
                 </a>
@@ -1190,117 +1300,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/07/3-7-LeetCode-刷题/" itemprop="url">
-                  3.7-LeetCode-刷题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-07T17:52:54+08:00" content="2017-03-07">
-              2017-03-07
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/07/3-7-LeetCode-刷题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/07/3-7-LeetCode-刷题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="ZigZagConversation"><a href="#ZigZagConversation" class="headerlink" title="ZigZagConversation"></a>ZigZagConversation</h2><p><a href="https://leetcode.com/problems/zigzag-conversion/?tab=Description">https://leetcode.com/problems/zigzag-conversion/?tab=Description</a><br>这个题首先明白什么是ZigZag pattern才能做，它是这样的格式<br>/*n=numRows</p>
-<pre><code>Δ=2n-2    1                           2n-1                         4n-3
-Δ=        2                     2n-2  2n                    4n-4   4n-2
-Δ=        3               2n-3        2n+1              4n-5       .
-Δ=        .           .               .               .            .
-Δ=        .       n+2                 .           3n               .
-Δ=        n-1 n+1                     3n-3    3n-1                 5n-5
-Δ=2n-2    n                           3n-2                         5n-4
-</code></pre><p>*/<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/07/3-7-LeetCode-刷题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1346,7 +1345,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1363,7 +1362,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
