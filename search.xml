@@ -49,12 +49,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Android内存泄漏文章读后感]]></title>
-      <url>http://wincber.com/2017/04/12/Android%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%96%87%E7%AB%A0%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Java 练习总结(一)]]></title>
       <url>http://wincber.com/2017/03/25/Java-%E7%BB%83%E4%B9%A0%E6%80%BB%E7%BB%93-%E4%B8%80/</url>
       <content type="html"><![CDATA[<p>通过牛客网练习题所总结的错题。</p>
@@ -161,18 +155,6 @@
 <p>用掉了136ms</p>
 <h2 id="Integer-Reverse"><a href="#Integer-Reverse" class="headerlink" title="Integer Reverse"></a>Integer Reverse</h2><p><a href="https://leetcode.com/problems/reverse-integer/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/reverse-integer/?tab=Description</a><br>这道题是很简单的数字反转的算法，但是通过率很低也是因为一个是照顾到Integer的范围2^32-1 —— -2^32，所以若将转换结果刚开始就定义为int时有可能在转换过程中由于达到了边界再运算时会从另一边界处开始，所以开始时要定义成长整型，long，返回结果时判断是否超过边界决定是否返回0，此外正负数模10结果只是符号相反。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public int reverse(int x) &#123;</div><div class="line">    long result = 0;</div><div class="line">    while(x != 0)&#123;</div><div class="line">        result = result * 10 + x%10;</div><div class="line">        x /= 10;</div><div class="line">    &#125;</div><div class="line">    return (result &gt; Integer.MAX_VALUE || result &lt; Integer.MIN_VALUE)?0:(int)result;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Spring 开发初试]]></title>
-      <url>http://wincber.com/2017/03/07/Spring-%E5%BC%80%E5%8F%91%E5%88%9D%E8%AF%95/</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Retrofit Android 初试]]></title>
-      <url>http://wincber.com/2017/03/07/Retrofit-Android-%E5%88%9D%E8%AF%95/</url>
-      <content type="html"></content>
     </entry>
     
     <entry>
