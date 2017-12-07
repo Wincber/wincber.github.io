@@ -92,6 +92,7 @@
 <meta property="og:url" content="http://wincber.com/index.html">
 <meta property="og:site_name" content="wincber note">
 <meta property="og:description" content="El psy congroo ！呜哈哈哈">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wincber note">
 <meta name="twitter:description" content="El psy congroo ！呜哈哈哈">
@@ -272,6 +273,109 @@
             
               
                 
+                <a class="post-title-link" href="/2017/12/07/hello-world/" itemprop="url">
+                  Hello Blog
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-07T01:16:23+08:00" content="2017-12-07">
+              2017-12-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/12/07/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/12/07/hello-world/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Welcome to my Blog !今天起开始好好的在这里写一些自己在学习过程中遇到的一些我所认为的重要的东西<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/12/07/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/07/14/记一集成环信所遇到Could-not-find-Class-NoClassDefError错误/" itemprop="url">
                   记一集成环信所遇到Could not find Class ..&NoClassDefError错误（Android4.x机）
                 </a>
@@ -324,11 +428,11 @@
         
           
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  最近项目测试阶段，app在Android4.x上打开直接崩溃，我也很崩溃，看log日志，发现是因为环信部分的错误，鼓捣了好久才终于解决（但估计兼容问题后续肯定还有很多问题T_T）</p>
-<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>怎么说，开门见山，先直接说解决方案<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.检查环信的初始化</div><div class="line">2.检查MultiDex配置</div><div class="line">3.检查混淆文件</div></pre></td></tr></table></figure></p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>怎么说，开门见山，先直接说解决方案<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.检查环信的初始化</span><br><span class="line">2.检查MultiDex配置</span><br><span class="line">3.检查混淆文件</span><br></pre></td></tr></table></figure></p>
 <p>实际上我不是按照这个步骤来的，所以耗时耗力耗精神，因为我看log日志文件所报的错误就像题目<strong>Can not find class……</strong>，就是说我的环信包下的类找不到。<br>因为我的项目依赖了EaseUI模块，所以环信sdk是在EaseUI模块中的，而环信sdk的初始话要放在我app的Application中，即要用到EaseUI中的sdk，而在Android4.x手机上运行时就显示找不到这个类，所以初始化失败所以就崩了。<br>我排查了很多问题，觉得最主要要做好的是前两点。</p>
 <h3 id="检查环信的初始化"><a href="#检查环信的初始化" class="headerlink" title="检查环信的初始化"></a>检查环信的初始化</h3><p>我在排查的末阶段才发现这个问题，真是stupid。<br>什么问题呢？就是我的环信sdk初始化了两次，我的环信模块是按demo中的写的，所以在helper中就会初始化easeui（看过demo文件你就知道了），而<strong>EaseUI.getInstan().init(context,options)</strong>中就对环信sdk初始化了，所以如果你在之前或者之后在还初始化了环信sdk，即<strong>EMClient.getInstance().init(context,options)</strong>，就会出问题。</p>
 <p>重复初始话sdk要出问题也是官方文档中特意说明的。要注意这一点。</p>
-<h3 id="检查MultiDex配置"><a href="#检查MultiDex配置" class="headerlink" title="检查MultiDex配置"></a>检查MultiDex配置</h3><p>集成环信会用到MultiDex来避免64k方法（你肯定也用到了），所以务必检查MultiDex的初始化，主要是两点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.你的Application继承自MultiDexApplication</div><div class="line">2.MultiDex.install()</div></pre></td></tr></table></figure></p>
+<h3 id="检查MultiDex配置"><a href="#检查MultiDex配置" class="headerlink" title="检查MultiDex配置"></a>检查MultiDex配置</h3><p>集成环信会用到MultiDex来避免64k方法（你肯定也用到了），所以务必检查MultiDex的初始化，主要是两点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.你的Application继承自MultiDexApplication</span><br><span class="line">2.MultiDex.install()</span><br></pre></td></tr></table></figure></p>
 <p>具体的使用方法就不说了，随便插一下你就知道。</p>
 <h3 id="检查混淆文件"><a href="#检查混淆文件" class="headerlink" title="检查混淆文件"></a>检查混淆文件</h3><p>其实这一步不是非常必要的，但是有可能会出现这一点，我刚开始一直以为是这样里的问题，后来发现其实是前两点的问题<br>不过混淆文件也要注意一下对于keep 和dontwarn的使用，但是其实对于环信部分的混淆，你把demo中的混淆文件中的内容拷贝过来就可以了，大体不用改什么。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说，出了问题，首先看前两点，我这次也是长了教训，不过Android5.0以上又没问题，这个就很奇怪，但是按标准来是没问题的，不要先找混淆文件的问题！不要先找混淆文件的问题！不要先找混淆文件的问题！重要的话说三遍。这次确实是log日志把我坑了，大家也要想的广一点，不一定要纠结于log上所展现的问题，有时候他不是问题的本质所在。<br>继续加油！！</p>
@@ -433,7 +537,7 @@
         
           
             <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>我的Fragment时放在FragmentManager里的，用的时show和hide方法，所以，当我最外不得Activity创建后，执行过fragment的onCreateView和onResume后，再次返回到这个界面就不会执行这两个函数，但我又要进行数据刷新嘞</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>经过查阅API文档，找到了   onHiddenChanged(boolean hide)   ,函数介绍如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">    void onHiddenChanged (boolean hidden)</div><div class="line">Called when the hidden state (as returned by isHidden() of the fragment has changed. Fragments start out not hidden; this will be called whenever the fragment changes state from that.</div></pre></td></tr></table></figure></p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>经过查阅API文档，找到了   onHiddenChanged(boolean hide)   ,函数介绍如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    void onHiddenChanged (boolean hidden)</span><br><span class="line">Called when the hidden state (as returned by isHidden() of the fragment has changed. Fragments start out not hidden; this will be called whenever the fragment changes state from that.</span><br></pre></td></tr></table></figure></p>
 <p>顾名思义就是每次隐藏和可见时会触发，所以数据更新放在这个函数里判断hide状态来进行更新就可以了。<br>另外 还有一个函数    setUserVisibleHint(boolean isVisibleToUser)     这个函数也是针对是否对用户可见触发，但是这个函数好像是针对于使用ViewPager时使用，反正我在我的Fragment中使用是不起作用的（没用ViewPager）</p>
 <p>Keep fighting!!!</p>
 
@@ -752,8 +856,8 @@
 </ol>
 <p><img src="http://oczm2hjoz.bkt.clouddn.com/image/jpg/Exception.jpg" alt="Exception"></p>
 <ol>
-<li><p>第四题是jvm的垃圾回收算法的分类：<br><a href="https://www.nowcoder.com/test/question/done?tid=7485282&amp;qid=36411#summary" target="_blank" rel="external">https://www.nowcoder.com/test/question/done?tid=7485282&amp;qid=36411#summary</a><br>我直接复制过来，学习了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">两个最基本的java回收算法：复制算法和标记清理算法</div><div class="line">复制算法：两个区域A和B，初始对象在A，继续存活的对象被转移到B。此为新生代最常用的算法</div><div class="line">标记清理：一块区域，标记要回收的对象，然后回收，一定会出现碎片，那么引出</div><div class="line">标记-整理算法：多了碎片整理，整理出更大的内存放更大的对象</div><div class="line">两个概念：新生代和年老代</div><div class="line">新生代：初始对象，生命周期短的</div><div class="line">永久代：长时间存在的对象</div><div class="line">整个java的垃圾回收是新生代和年老代的协作，这种叫做分代回收。</div><div class="line">P.S：Serial New收集器是针对新生代的收集器，采用的是复制算法</div><div class="line">Parallel New（并行）收集器，新生代采用复制算法，老年代采用标记整理</div><div class="line">Parallel Scavenge（并行）收集器，针对新生代，采用复制收集算法</div><div class="line">Serial Old（串行）收集器，新生代采用复制，老年代采用标记整理</div><div class="line">Parallel Old（并行）收集器，针对老年代，标记整理</div><div class="line">CMS收集器，基于标记清理</div><div class="line">G1收集器：整体上是基于标记 整理 ，局部采用复制</div><div class="line"></div><div class="line">综上：新生代基本采用复制算法，老年代采用标记整理算法。cms采用标记清理。</div></pre></td></tr></table></figure>
+<li><p>第四题是jvm的垃圾回收算法的分类：<br><a href="https://www.nowcoder.com/test/question/done?tid=7485282&amp;qid=36411#summary" target="_blank" rel="noopener">https://www.nowcoder.com/test/question/done?tid=7485282&amp;qid=36411#summary</a><br>我直接复制过来，学习了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">两个最基本的java回收算法：复制算法和标记清理算法</span><br><span class="line">复制算法：两个区域A和B，初始对象在A，继续存活的对象被转移到B。此为新生代最常用的算法</span><br><span class="line">标记清理：一块区域，标记要回收的对象，然后回收，一定会出现碎片，那么引出</span><br><span class="line">标记-整理算法：多了碎片整理，整理出更大的内存放更大的对象</span><br><span class="line">两个概念：新生代和年老代</span><br><span class="line">新生代：初始对象，生命周期短的</span><br><span class="line">永久代：长时间存在的对象</span><br><span class="line">整个java的垃圾回收是新生代和年老代的协作，这种叫做分代回收。</span><br><span class="line">P.S：Serial New收集器是针对新生代的收集器，采用的是复制算法</span><br><span class="line">Parallel New（并行）收集器，新生代采用复制算法，老年代采用标记整理</span><br><span class="line">Parallel Scavenge（并行）收集器，针对新生代，采用复制收集算法</span><br><span class="line">Serial Old（串行）收集器，新生代采用复制，老年代采用标记整理</span><br><span class="line">Parallel Old（并行）收集器，针对老年代，标记整理</span><br><span class="line">CMS收集器，基于标记清理</span><br><span class="line">G1收集器：整体上是基于标记 整理 ，局部采用复制</span><br><span class="line"></span><br><span class="line">综上：新生代基本采用复制算法，老年代采用标记整理算法。cms采用标记清理。</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>第五题是我没有细心，不过就记住一句话 方法是没有继承一说的，只有重载和重写。类之间是继承的</p>
 </li>
@@ -858,9 +962,9 @@
       
         
           
-            <p>今天遇到了<strong>java.lang.StackOverflowError: stack size 8MB</strong>这个问题，如果你去直接查的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。<br>不过就我遇到的问题来说它打印的日志还有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState</div></pre></td></tr></table></figure></p>
-<p>我按照这个erro信息查了以后便发现了我的问题出现在了哪里。<br>因为我所做的是个ViewPager配套Fragment的布局，而在Fragment中onCreateView中我错误的使用了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">return inflater.inflate(R.layout.content_pager,container);</div></pre></td></tr></table></figure></p>
-<p>而就是因为第二个参数设置成了<strong>container</strong>,所以它会加载<strong>container</strong>（此时为<em>ViewPager</em>）作为根布局，一层层往底部某处就陷入死循环，最终崩溃。<br>所以第二个参数应改为null，即<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">return inflater.inflate(R.layout.content_pager,null);</div></pre></td></tr></table></figure></p>
+            <p>今天遇到了<strong>java.lang.StackOverflowError: stack size 8MB</strong>这个问题，如果你去直接查的话是查不到什么，都会说是因为死循环了之类的问题，但是哪里死循环了就不知道了，我调试时也是这样。<br>不过就我遇到的问题来说它打印的日志还有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.err: at android.view.ViewGroup.jumpDrawablesToCurrentState</span><br></pre></td></tr></table></figure></p>
+<p>我按照这个erro信息查了以后便发现了我的问题出现在了哪里。<br>因为我所做的是个ViewPager配套Fragment的布局，而在Fragment中onCreateView中我错误的使用了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return inflater.inflate(R.layout.content_pager,container);</span><br></pre></td></tr></table></figure></p>
+<p>而就是因为第二个参数设置成了<strong>container</strong>,所以它会加载<strong>container</strong>（此时为<em>ViewPager</em>）作为根布局，一层层往底部某处就陷入死循环，最终崩溃。<br>所以第二个参数应改为null，即<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return inflater.inflate(R.layout.content_pager,null);</span><br></pre></td></tr></table></figure></p>
 <p>至于哪里陷入了死循环，为什么陷入了，我尚且还没搞出来，但是是涉及ViewRoot的展示和线程之间的转换。所以也是寻求个帮助。</p>
 
           
@@ -961,7 +1065,7 @@
 
       
         
-          <h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h1><p>Set也是继承自Collection的接口，与List不同的是他不允许有重复的元素存在，并允许存储null元素（最多一个）。它的API主要有<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">int size();         返回Set的大小</div><div class="line">boolean empty();    返回是否为空</div><div class="line">boolean contains(Object o);     是否包含对象o</div><div class="line">Iterator&lt;E&gt; iterator();     返回此集合的迭代器</div><div class="line">&lt;T&gt;T[] toArray(T[] a);      转化为数组</div><div class="line">boolean add(Object o);      添加对象o</div><div class="line">boolean remove(Object o);   移除对象o</div><div class="line">boolean containsAll(Collection&lt;?&gt; c);       是否包含c集合</div><div class="line">boolean addAll(Collection&lt;? extends E&gt; c);  添加c到此set中</div><div class="line">boolean retainAll(Collection&lt;?&gt; c);     保留c 移除c以外的元素</div><div class="line">boolean removeAll(Collection&lt;?&gt; c);     移除set中的c集合</div><div class="line">void clear();   清空集合</div><div class="line">boolean equals(Object o);       与o是否相等</div><div class="line">int hashCode();     返回hashCode</div></pre></td></tr></table></figure></p>
+          <h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h1><p>Set也是继承自Collection的接口，与List不同的是他不允许有重复的元素存在，并允许存储null元素（最多一个）。它的API主要有<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int size();         返回Set的大小</span><br><span class="line">boolean empty();    返回是否为空</span><br><span class="line">boolean contains(Object o);     是否包含对象o</span><br><span class="line">Iterator&lt;E&gt; iterator();     返回此集合的迭代器</span><br><span class="line">&lt;T&gt;T[] toArray(T[] a);      转化为数组</span><br><span class="line">boolean add(Object o);      添加对象o</span><br><span class="line">boolean remove(Object o);   移除对象o</span><br><span class="line">boolean containsAll(Collection&lt;?&gt; c);       是否包含c集合</span><br><span class="line">boolean addAll(Collection&lt;? extends E&gt; c);  添加c到此set中</span><br><span class="line">boolean retainAll(Collection&lt;?&gt; c);     保留c 移除c以外的元素</span><br><span class="line">boolean removeAll(Collection&lt;?&gt; c);     移除set中的c集合</span><br><span class="line">void clear();   清空集合</span><br><span class="line">boolean equals(Object o);       与o是否相等</span><br><span class="line">int hashCode();     返回hashCode</span><br></pre></td></tr></table></figure></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/03/18/java-Set小结/#more" rel="contents">
               阅读全文 &raquo;
@@ -1170,117 +1274,6 @@
           <p>RxJava和RxAndroid 是ReactiveX的java实现版，其实是异步操作框架，是一种观察者模式实现的框架。十分的简洁十分有必要了解学习一下。所以昨天就看了基本的用法并照着写了个demo。掌握？不存在的，知识简单知道怎么用了。
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/03/12/RxAndroid-初试/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/07/3-7-LeetCode-刷题/" itemprop="url">
-                  3.7-LeetCode-刷题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-07T17:52:54+08:00" content="2017-03-07">
-              2017-03-07
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/07/3-7-LeetCode-刷题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/07/3-7-LeetCode-刷题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="ZigZagConversation"><a href="#ZigZagConversation" class="headerlink" title="ZigZagConversation"></a>ZigZagConversation</h2><p><a href="https://leetcode.com/problems/zigzag-conversion/?tab=Description">https://leetcode.com/problems/zigzag-conversion/?tab=Description</a><br>这个题首先明白什么是ZigZag pattern才能做，它是这样的格式<br>/*n=numRows</p>
-<pre><code>Δ=2n-2    1                           2n-1                         4n-3
-Δ=        2                     2n-2  2n                    4n-4   4n-2
-Δ=        3               2n-3        2n+1              4n-5       .
-Δ=        .           .               .               .            .
-Δ=        .       n+2                 .           3n               .
-Δ=        n-1 n+1                     3n-3    3n-1                 5n-5
-Δ=2n-2    n                           3n-2                         5n-4
-</code></pre><p>*/<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/07/3-7-LeetCode-刷题/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

@@ -87,12 +87,14 @@
 
 
 <meta name="description" content="买了《Android开发艺术探索》，看了IPC这一章节的前两个小节，序列化机制和Binder，即进程间通信这一节，谈谈收获。">
+<meta name="keywords" content="android,IPC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2.28 Android IPC前三节收获">
 <meta property="og:url" content="http://wincber.com/2017/02/28/2-28-Android-IPC/index.html">
 <meta property="og:site_name" content="wincber note">
 <meta property="og:description" content="买了《Android开发艺术探索》，看了IPC这一章节的前两个小节，序列化机制和Binder，即进程间通信这一节，谈谈收获。">
-<meta property="og:updated_time" content="2017-03-03T12:06:20.668Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-03-03T12:06:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2.28 Android IPC前三节收获">
 <meta name="twitter:description" content="买了《Android开发艺术探索》，看了IPC这一章节的前两个小节，序列化机制和Binder，即进程间通信这一节，谈谈收获。">
@@ -545,7 +547,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一小节-IPC介绍"><span class="nav-number">1.</span> <span class="nav-text">第一小节 IPC介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二小节-多进程模式"><span class="nav-number">2.</span> <span class="nav-text">第二小节 多进程模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三小节-序列化机制"><span class="nav-number">3.</span> <span class="nav-text">第三小节 序列化机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Serializable接口"><span class="nav-number">3.1.</span> <span class="nav-text">Serializable接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parcelable接口"><span class="nav-number">3.2.</span> <span class="nav-text">Parcelable接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binder"><span class="nav-number">3.3.</span> <span class="nav-text">Binder</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一小节-IPC介绍"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x7B2C;&#x4E00;&#x5C0F;&#x8282;-IPC&#x4ECB;&#x7ECD;" class="headerlink" title="&#x7B2C;&#x4E00;&#x5C0F;&#x8282; IPC&#x4ECB;&#x7ECD;"></a>&#x7B2C;&#x4E00;&#x5C0F;&#x8282; IPC&#x4ECB;&#x7ECD;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二小节-多进程模式"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x7B2C;&#x4E8C;&#x5C0F;&#x8282;-&#x591A;&#x8FDB;&#x7A0B;&#x6A21;&#x5F0F;" class="headerlink" title="&#x7B2C;&#x4E8C;&#x5C0F;&#x8282; &#x591A;&#x8FDB;&#x7A0B;&#x6A21;&#x5F0F;"></a>&#x7B2C;&#x4E8C;&#x5C0F;&#x8282; &#x591A;&#x8FDB;&#x7A0B;&#x6A21;&#x5F0F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三小节-序列化机制"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x7B2C;&#x4E09;&#x5C0F;&#x8282;-&#x5E8F;&#x5217;&#x5316;&#x673A;&#x5236;" class="headerlink" title="&#x7B2C;&#x4E09;&#x5C0F;&#x8282; &#x5E8F;&#x5217;&#x5316;&#x673A;&#x5236;"></a>&#x7B2C;&#x4E09;&#x5C0F;&#x8282; &#x5E8F;&#x5217;&#x5316;&#x673A;&#x5236;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Serializable接口"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#Serializable&#x63A5;&#x53E3;" class="headerlink" title="Serializable&#x63A5;&#x53E3;"></a>Serializable&#x63A5;&#x53E3;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parcelable接口"><span class="nav-number">3.2.</span> <span class="nav-text"><a href="#Parcelable&#x63A5;&#x53E3;" class="headerlink" title="Parcelable&#x63A5;&#x53E3;"></a>Parcelable&#x63A5;&#x53E3;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binder"><span class="nav-number">3.3.</span> <span class="nav-text"><a href="#Binder" class="headerlink" title="Binder"></a>Binder</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

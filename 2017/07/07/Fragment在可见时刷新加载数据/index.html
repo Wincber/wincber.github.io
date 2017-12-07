@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="问题我的Fragment时放在FragmentManager里的，用的时show和hide方法，所以，当我最外不得Activity创建后，执行过fragment的onCreateView和onResume后，再次返回到这个界面就不会执行这两个函数，但我又要进行数据刷新嘞
-解决方法经过查阅API文档，找到了   onHiddenChanged(boolean hide)   ,函数介绍如下12">
+<meta name="description" content="问题我的Fragment时放在FragmentManager里的，用的时show和hide方法，所以，当我最外不得Activity创建后，执行过fragment的onCreateView和onResume后，再次返回到这个界面就不会执行这两个函数，但我又要进行数据刷新嘞 解决方法经过查阅API文档，找到了   onHiddenChanged(boolean hide)   ,函数介绍如下12">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fragment在可见时刷新加载数据">
 <meta property="og:url" content="http://wincber.com/2017/07/07/Fragment在可见时刷新加载数据/index.html">
 <meta property="og:site_name" content="wincber note">
-<meta property="og:description" content="问题我的Fragment时放在FragmentManager里的，用的时show和hide方法，所以，当我最外不得Activity创建后，执行过fragment的onCreateView和onResume后，再次返回到这个界面就不会执行这两个函数，但我又要进行数据刷新嘞
-解决方法经过查阅API文档，找到了   onHiddenChanged(boolean hide)   ,函数介绍如下12">
-<meta property="og:updated_time" content="2017-07-06T16:36:33.311Z">
+<meta property="og:description" content="问题我的Fragment时放在FragmentManager里的，用的时show和hide方法，所以，当我最外不得Activity创建后，执行过fragment的onCreateView和onResume后，再次返回到这个界面就不会执行这两个函数，但我又要进行数据刷新嘞 解决方法经过查阅API文档，找到了   onHiddenChanged(boolean hide)   ,函数介绍如下12">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-06T16:36:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fragment在可见时刷新加载数据">
-<meta name="twitter:description" content="问题我的Fragment时放在FragmentManager里的，用的时show和hide方法，所以，当我最外不得Activity创建后，执行过fragment的onCreateView和onResume后，再次返回到这个界面就不会执行这两个函数，但我又要进行数据刷新嘞
-解决方法经过查阅API文档，找到了   onHiddenChanged(boolean hide)   ,函数介绍如下12">
+<meta name="twitter:description" content="问题我的Fragment时放在FragmentManager里的，用的时show和hide方法，所以，当我最外不得Activity创建后，执行过fragment的onCreateView和onResume后，再次返回到这个界面就不会执行这两个函数，但我又要进行数据刷新嘞 解决方法经过查阅API文档，找到了   onHiddenChanged(boolean hide)   ,函数介绍如下12">
 
 
 
@@ -326,7 +325,7 @@
 
       
         <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>我的Fragment时放在FragmentManager里的，用的时show和hide方法，所以，当我最外不得Activity创建后，执行过fragment的onCreateView和onResume后，再次返回到这个界面就不会执行这两个函数，但我又要进行数据刷新嘞</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>经过查阅API文档，找到了   onHiddenChanged(boolean hide)   ,函数介绍如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">    void onHiddenChanged (boolean hidden)</div><div class="line">Called when the hidden state (as returned by isHidden() of the fragment has changed. Fragments start out not hidden; this will be called whenever the fragment changes state from that.</div></pre></td></tr></table></figure></p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>经过查阅API文档，找到了   onHiddenChanged(boolean hide)   ,函数介绍如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    void onHiddenChanged (boolean hidden)</span><br><span class="line">Called when the hidden state (as returned by isHidden() of the fragment has changed. Fragments start out not hidden; this will be called whenever the fragment changes state from that.</span><br></pre></td></tr></table></figure></p>
 <p>顾名思义就是每次隐藏和可见时会触发，所以数据更新放在这个函数里判断hide状态来进行更新就可以了。<br>另外 还有一个函数    setUserVisibleHint(boolean isVisibleToUser)     这个函数也是针对是否对用户可见触发，但是这个函数好像是针对于使用ViewPager时使用，反正我在我的Fragment中使用是不起作用的（没用ViewPager）</p>
 <p>Keep fighting!!!</p>
 
@@ -498,7 +497,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">2.</span> <span class="nav-text">解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x95EE;&#x9898;" class="headerlink" title="&#x95EE;&#x9898;"></a>&#x95EE;&#x9898;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x89E3;&#x51B3;&#x65B9;&#x6CD5;" class="headerlink" title="&#x89E3;&#x51B3;&#x65B9;&#x6CD5;"></a>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;</span></a></li></ol></div>
             
           </div>
         </section>

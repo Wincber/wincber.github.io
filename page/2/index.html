@@ -92,6 +92,7 @@
 <meta property="og:url" content="http://wincber.com/page/2/index.html">
 <meta property="og:site_name" content="wincber note">
 <meta property="og:description" content="El psy congroo ！呜哈哈哈">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wincber note">
 <meta name="twitter:description" content="El psy congroo ！呜哈哈哈">
@@ -250,6 +251,117 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/07/3-7-LeetCode-刷题/" itemprop="url">
+                  3.7-LeetCode-刷题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-07T17:52:54+08:00" content="2017-03-07">
+              2017-03-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/07/3-7-LeetCode-刷题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/07/3-7-LeetCode-刷题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="ZigZagConversation"><a href="#ZigZagConversation" class="headerlink" title="ZigZagConversation"></a>ZigZagConversation</h2><p><a href="https://leetcode.com/problems/zigzag-conversion/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/zigzag-conversion/?tab=Description</a><br>这个题首先明白什么是ZigZag pattern才能做，它是这样的格式<br>/*n=numRows</p>
+<pre><code>Δ=2n-2    1                           2n-1                         4n-3
+Δ=        2                     2n-2  2n                    4n-4   4n-2
+Δ=        3               2n-3        2n+1              4n-5       .
+Δ=        .           .               .               .            .
+Δ=        .       n+2                 .           3n               .
+Δ=        n-1 n+1                     3n-3    3n-1                 5n-5
+Δ=2n-2    n                           3n-2                         5n-4
+</code></pre><p>*/<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/07/3-7-LeetCode-刷题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -530,7 +642,7 @@
         
           
             <p>算法一直不咋地，决定要开始刷一刷算法，每天在LeetCode上做两三道，希望可以做到吧，本着买了就当看了的心态，还买了算法导论。（提前声明，这种算法文章都是我自己刷算法的笔记体会，算法大神不要吐槽，当然欢迎指导）。<br>不扯淡了，今天只做了三道算法题，都是Easy级别的（T_T），不过慢慢积累嘛，就说说这三道。</p>
-<h2 id="TwoSum"><a href="#TwoSum" class="headerlink" title="TwoSum"></a>TwoSum</h2><p><a href="https://leetcode.com/problems/two-sum/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/two-sum/?tab=Description</a></p>
+<h2 id="TwoSum"><a href="#TwoSum" class="headerlink" title="TwoSum"></a>TwoSum</h2><p><a href="https://leetcode.com/problems/two-sum/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/two-sum/?tab=Description</a></p>
 <p>题目就不说了，这个考的是HashMap的知识（Java中是HashMap，C++的话用Vector），都是利用他们的键值快速查找来解题。<br>这也是巧妙地一点，将值作为Key，索引作为Value，因为Key的查找是快速查找，HashMap中的containsKey(key)中又是利用getNode(hash,key)方法实现，内部实现是利用链表的顺序查找实现。<br>所以我提交的是</p>
 <pre><code>public class TwoSum {
 public static void main(String[] args){
@@ -563,7 +675,7 @@ public int[] twoSum(int []x,int target){
     return null;
 }
 </code></pre><p>}</p>
-<h2 id="HammingDistance"><a href="#HammingDistance" class="headerlink" title="HammingDistance"></a>HammingDistance</h2><p><a href="https://leetcode.com/problems/hamming-distance/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/hamming-distance/?tab=Description</a></p>
+<h2 id="HammingDistance"><a href="#HammingDistance" class="headerlink" title="HammingDistance"></a>HammingDistance</h2><p><a href="https://leetcode.com/problems/hamming-distance/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/hamming-distance/?tab=Description</a></p>
 <p>这道题很简单，我用的是位运算，将两个二进制数中的1通过异或放在同一个二进制数，在通过移位进行距离的计算。<br>Solution:</p>
 <pre><code>public class HammingDistance {
 public static void main(String[] args){
@@ -581,7 +693,7 @@ public  int hammingDistance(int x, int y){
     return dis;
 }
 </code></pre><p>}</p>
-<h2 id="NumberComplement"><a href="#NumberComplement" class="headerlink" title="NumberComplement"></a>NumberComplement</h2><p><a href="https://leetcode.com/problems/number-complement/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/number-complement/?tab=Description</a></p>
+<h2 id="NumberComplement"><a href="#NumberComplement" class="headerlink" title="NumberComplement"></a>NumberComplement</h2><p><a href="https://leetcode.com/problems/number-complement/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/number-complement/?tab=Description</a></p>
 <p>这道题也不难，不过我提交失败了好几次，主要是没有考虑周全。要求一个二进制中的0和1互换后的数，刚开始我还考虑了好几种情况，事实证明想多了，我的做法简单来说，因为不以0开头，所以相当于取一位数判断0,1，再进行移位。感觉说的有点不清楚，代码一看就明白</p>
 <pre><code>public class NumberComplement {
 public static void main(String[] args){
@@ -1394,152 +1506,6 @@ public int findComplement(int num){
           <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看到群里有人发面试题我就试着看了看，发现有很多自己不明白的，所以写这个，一方面相当于自己的笔记，也能更好的记住，理解，另一方面也为其他人提供一些知识点参考吧。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/10/21/面试题知识点（一）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/16/拍照裁剪/" itemprop="url">
-                  android之拍照裁剪
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T11:51:26+08:00" content="2016-10-16">
-              2016-10-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/学习笔记/Demo/" itemprop="url" rel="index">
-                    <span itemprop="name">Demo</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/16/拍照裁剪/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/10/16/拍照裁剪/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>基本现在什么app都是有个人信息这一栏，有你的头像，有你的其他信息什么的，基本上选择头像的逻辑都是点击头像选择1，拍照 2，从图库中选取<br>所以拍照，照片裁剪基本上是必不可少的，也是在把第一行代码实践一遍的时候发现的问题，并尝试了解决。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/16/拍照裁剪/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

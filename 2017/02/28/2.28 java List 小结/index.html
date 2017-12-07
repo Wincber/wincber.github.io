@@ -87,13 +87,15 @@
 
 
 <meta name="description" content="2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解。（通过简单的查看源码以及网上博客分析），还有">
+<meta name="keywords" content="java,String,StringBuffer,StringBuilder">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2月28日：String，StringBuffer，StringBuilder和集合分类">
 <meta property="og:url" content="http://wincber.com/2017/02/28/2.28 java List 小结/index.html">
 <meta property="og:site_name" content="wincber note">
 <meta property="og:description" content="2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解。（通过简单的查看源码以及网上博客分析），还有">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oczm2hjoz.bkt.clouddn.com/Image/jpg/Collection.jpg">
-<meta property="og:updated_time" content="2017-03-03T12:07:19.890Z">
+<meta property="og:updated_time" content="2017-03-03T12:07:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2月28日：String，StringBuffer，StringBuilder和集合分类">
 <meta name="twitter:description" content="2月28日的收获：对String，StringBuffer，StringBuilder进行了小研究，简单地查看了源码，也看了网上的讲解三者的区别和优缺点和使用方法对java中的集合部分有了一定的了解。（通过简单的查看源码以及网上博客分析），还有">
@@ -551,7 +553,7 @@ Map:HashMap HashTable，TreeMap，WeakHashMap
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#String，StringBuffer，StringBuilder"><span class="nav-number">1.</span> <span class="nav-text">String，StringBuffer，StringBuilder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类"><span class="nav-number">2.</span> <span class="nav-text">集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#String，StringBuffer，StringBuilder"><span class="nav-number">1.</span> <span class="nav-text"><a href="#String&#xFF0C;StringBuffer&#xFF0C;StringBuilder" class="headerlink" title="String&#xFF0C;StringBuffer&#xFF0C;StringBuilder"></a>String&#xFF0C;StringBuffer&#xFF0C;StringBuilder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合：从上至下即从Collection和Map两个接口到两个接口派生的List、Set接口和SortedMap，NegativeMap接口乃至实现各自接口的类"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x96C6;&#x5408;&#xFF1A;&#x4ECE;&#x4E0A;&#x81F3;&#x4E0B;&#x5373;&#x4ECE;Collection&#x548C;Map&#x4E24;&#x4E2A;&#x63A5;&#x53E3;&#x5230;&#x4E24;&#x4E2A;&#x63A5;&#x53E3;&#x6D3E;&#x751F;&#x7684;List&#x3001;Set&#x63A5;&#x53E3;&#x548C;SortedMap&#xFF0C;NegativeMap&#x63A5;&#x53E3;&#x4E43;&#x81F3;&#x5B9E;&#x73B0;&#x5404;&#x81EA;&#x63A5;&#x53E3;&#x7684;&#x7C7B;" class="headerlink" title="&#x96C6;&#x5408;&#xFF1A;&#x4ECE;&#x4E0A;&#x81F3;&#x4E0B;&#x5373;&#x4ECE;Collection&#x548C;Map&#x4E24;&#x4E2A;&#x63A5;&#x53E3;&#x5230;&#x4E24;&#x4E2A;&#x63A5;&#x53E3;&#x6D3E;&#x751F;&#x7684;List&#x3001;Set&#x63A5;&#x53E3;&#x548C;SortedMap&#xFF0C;NegativeMap&#x63A5;&#x53E3;&#x4E43;&#x81F3;&#x5B9E;&#x73B0;&#x5404;&#x81EA;&#x63A5;&#x53E3;&#x7684;&#x7C7B;"></a>&#x96C6;&#x5408;&#xFF1A;&#x4ECE;&#x4E0A;&#x81F3;&#x4E0B;&#x5373;&#x4ECE;Collection&#x548C;Map&#x4E24;&#x4E2A;&#x63A5;&#x53E3;&#x5230;&#x4E24;&#x4E2A;&#x63A5;&#x53E3;&#x6D3E;&#x751F;&#x7684;List&#x3001;Set&#x63A5;&#x53E3;&#x548C;SortedMap&#xFF0C;NegativeMap&#x63A5;&#x53E3;&#x4E43;&#x81F3;&#x5B9E;&#x73B0;&#x5404;&#x81EA;&#x63A5;&#x53E3;&#x7684;&#x7C7B;</span></a></li></ol></div>
             
           </div>
         </section>

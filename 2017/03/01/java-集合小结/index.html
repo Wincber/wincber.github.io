@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="继续昨天的，集合知识小结。（简单的阅读了源码和网上的一些解读。
-Colletion和Map并肩构成集合类的最根本的接口，继承自Iterable接口，所有集合都可用迭代器迭代来遍历集合">
+<meta name="description" content="继续昨天的，集合知识小结。（简单的阅读了源码和网上的一些解读。 Colletion和Map并肩构成集合类的最根本的接口，继承自Iterable接口，所有集合都可用迭代器迭代来遍历集合">
+<meta name="keywords" content="java,集合,List">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java List小结">
 <meta property="og:url" content="http://wincber.com/2017/03/01/java-集合小结/index.html">
 <meta property="og:site_name" content="wincber note">
-<meta property="og:description" content="继续昨天的，集合知识小结。（简单的阅读了源码和网上的一些解读。
-Colletion和Map并肩构成集合类的最根本的接口，继承自Iterable接口，所有集合都可用迭代器迭代来遍历集合">
-<meta property="og:updated_time" content="2017-03-03T12:07:47.371Z">
+<meta property="og:description" content="继续昨天的，集合知识小结。（简单的阅读了源码和网上的一些解读。 Colletion和Map并肩构成集合类的最根本的接口，继承自Iterable接口，所有集合都可用迭代器迭代来遍历集合">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-03-03T12:07:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java List小结">
-<meta name="twitter:description" content="继续昨天的，集合知识小结。（简单的阅读了源码和网上的一些解读。
-Colletion和Map并肩构成集合类的最根本的接口，继承自Iterable接口，所有集合都可用迭代器迭代来遍历集合">
+<meta name="twitter:description" content="继续昨天的，集合知识小结。（简单的阅读了源码和网上的一些解读。 Colletion和Map并肩构成集合类的最根本的接口，继承自Iterable接口，所有集合都可用迭代器迭代来遍历集合">
 
 
 
@@ -615,7 +614,7 @@ peek()  查看栈顶元素
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Colletion"><span class="nav-number">1.</span> <span class="nav-text">Colletion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AbstractCollection-是实现Collection的集合类。实现了Collection除了iterator-和size-抽象方法-以外的其他方法。"><span class="nav-number">1.1.</span> <span class="nav-text">AbstractCollection 是实现Collection的集合类。实现了Collection除了iterator()和size()(抽象方法)以外的其他方法。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">2.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AbstractList-继承自AbstractCollection-，实现List接口，除get-和-size-两个抽象方法外实现了List的其他方法，是ArrayList和LinkedList的基类"><span class="nav-number">2.1.</span> <span class="nav-text">AbstractList 继承自AbstractCollection ，实现List接口，除get() 和 size() 两个抽象方法外实现了List的其他方法，是ArrayList和LinkedList的基类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList-，LinkedList，vector都是继承自AbstractList"><span class="nav-number">2.1.1.</span> <span class="nav-text">ArrayList ，LinkedList，vector都是继承自AbstractList</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Colletion"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Colletion" class="headerlink" title="Colletion"></a>Colletion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AbstractCollection-是实现Collection的集合类。实现了Collection除了iterator-和size-抽象方法-以外的其他方法。"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#AbstractCollection-&#x662F;&#x5B9E;&#x73B0;Collection&#x7684;&#x96C6;&#x5408;&#x7C7B;&#x3002;&#x5B9E;&#x73B0;&#x4E86;Collection&#x9664;&#x4E86;iterator-&#x548C;size-&#x62BD;&#x8C61;&#x65B9;&#x6CD5;-&#x4EE5;&#x5916;&#x7684;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#x3002;" class="headerlink" title="AbstractCollection &#x662F;&#x5B9E;&#x73B0;Collection&#x7684;&#x96C6;&#x5408;&#x7C7B;&#x3002;&#x5B9E;&#x73B0;&#x4E86;Collection&#x9664;&#x4E86;iterator()&#x548C;size()(&#x62BD;&#x8C61;&#x65B9;&#x6CD5;)&#x4EE5;&#x5916;&#x7684;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#x3002;"></a>AbstractCollection &#x662F;&#x5B9E;&#x73B0;Collection&#x7684;&#x96C6;&#x5408;&#x7C7B;&#x3002;&#x5B9E;&#x73B0;&#x4E86;Collection&#x9664;&#x4E86;iterator()&#x548C;size()(&#x62BD;&#x8C61;&#x65B9;&#x6CD5;)&#x4EE5;&#x5916;&#x7684;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#x3002;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">2.</span> <span class="nav-text"><a href="#List" class="headerlink" title="List"></a>List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AbstractList-继承自AbstractCollection-，实现List接口，除get-和-size-两个抽象方法外实现了List的其他方法，是ArrayList和LinkedList的基类"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#AbstractList-&#x7EE7;&#x627F;&#x81EA;AbstractCollection-&#xFF0C;&#x5B9E;&#x73B0;List&#x63A5;&#x53E3;&#xFF0C;&#x9664;get-&#x548C;-size-&#x4E24;&#x4E2A;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x5916;&#x5B9E;&#x73B0;&#x4E86;List&#x7684;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#xFF0C;&#x662F;ArrayList&#x548C;LinkedList&#x7684;&#x57FA;&#x7C7B;" class="headerlink" title="AbstractList &#x7EE7;&#x627F;&#x81EA;AbstractCollection &#xFF0C;&#x5B9E;&#x73B0;List&#x63A5;&#x53E3;&#xFF0C;&#x9664;get() &#x548C; size() &#x4E24;&#x4E2A;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x5916;&#x5B9E;&#x73B0;&#x4E86;List&#x7684;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#xFF0C;&#x662F;ArrayList&#x548C;LinkedList&#x7684;&#x57FA;&#x7C7B;"></a>AbstractList &#x7EE7;&#x627F;&#x81EA;AbstractCollection &#xFF0C;&#x5B9E;&#x73B0;List&#x63A5;&#x53E3;&#xFF0C;&#x9664;get() &#x548C; size() &#x4E24;&#x4E2A;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x5916;&#x5B9E;&#x73B0;&#x4E86;List&#x7684;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#xFF0C;&#x662F;ArrayList&#x548C;LinkedList&#x7684;&#x57FA;&#x7C7B;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList-，LinkedList，vector都是继承自AbstractList"><span class="nav-number">2.1.1.</span> <span class="nav-text"><a href="#ArrayList-&#xFF0C;LinkedList&#xFF0C;vector&#x90FD;&#x662F;&#x7EE7;&#x627F;&#x81EA;AbstractList" class="headerlink" title="ArrayList &#xFF0C;LinkedList&#xFF0C;vector&#x90FD;&#x662F;&#x7EE7;&#x627F;&#x81EA;AbstractList"></a>ArrayList &#xFF0C;LinkedList&#xFF0C;vector&#x90FD;&#x662F;&#x7EE7;&#x627F;&#x81EA;AbstractList</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>

@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="算法,LeetCode," />
+  <meta name="keywords" content="LeetCode,算法," />
 
 
 
@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="算法一直不咋地，决定要开始刷一刷算法，每天在LeetCode上做两三道，希望可以做到吧，本着买了就当看了的心态，还买了算法导论。（提前声明，这种算法文章都是我自己刷算法的笔记体会，算法大神不要吐槽，当然欢迎指导）。不扯淡了，今天只做了三道算法题，都是Easy级别的（T_T），不过慢慢积累嘛，就说说这三道。
-TwoSumhttps://leetcode.com/problems/two-sum/?t">
+<meta name="description" content="算法一直不咋地，决定要开始刷一刷算法，每天在LeetCode上做两三道，希望可以做到吧，本着买了就当看了的心态，还买了算法导论。（提前声明，这种算法文章都是我自己刷算法的笔记体会，算法大神不要吐槽，当然欢迎指导）。不扯淡了，今天只做了三道算法题，都是Easy级别的（T_T），不过慢慢积累嘛，就说说这三道。 TwoSumhttps://leetcode.com/problems/two-sum/?t">
+<meta name="keywords" content="LeetCode,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3.5 LeetCode 刷题">
 <meta property="og:url" content="http://wincber.com/2017/03/06/3-5-LeetCode-刷题/index.html">
 <meta property="og:site_name" content="wincber note">
-<meta property="og:description" content="算法一直不咋地，决定要开始刷一刷算法，每天在LeetCode上做两三道，希望可以做到吧，本着买了就当看了的心态，还买了算法导论。（提前声明，这种算法文章都是我自己刷算法的笔记体会，算法大神不要吐槽，当然欢迎指导）。不扯淡了，今天只做了三道算法题，都是Easy级别的（T_T），不过慢慢积累嘛，就说说这三道。
-TwoSumhttps://leetcode.com/problems/two-sum/?t">
-<meta property="og:updated_time" content="2017-03-06T15:06:09.677Z">
+<meta property="og:description" content="算法一直不咋地，决定要开始刷一刷算法，每天在LeetCode上做两三道，希望可以做到吧，本着买了就当看了的心态，还买了算法导论。（提前声明，这种算法文章都是我自己刷算法的笔记体会，算法大神不要吐槽，当然欢迎指导）。不扯淡了，今天只做了三道算法题，都是Easy级别的（T_T），不过慢慢积累嘛，就说说这三道。 TwoSumhttps://leetcode.com/problems/two-sum/?t">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-03-06T15:06:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3.5 LeetCode 刷题">
-<meta name="twitter:description" content="算法一直不咋地，决定要开始刷一刷算法，每天在LeetCode上做两三道，希望可以做到吧，本着买了就当看了的心态，还买了算法导论。（提前声明，这种算法文章都是我自己刷算法的笔记体会，算法大神不要吐槽，当然欢迎指导）。不扯淡了，今天只做了三道算法题，都是Easy级别的（T_T），不过慢慢积累嘛，就说说这三道。
-TwoSumhttps://leetcode.com/problems/two-sum/?t">
+<meta name="twitter:description" content="算法一直不咋地，决定要开始刷一刷算法，每天在LeetCode上做两三道，希望可以做到吧，本着买了就当看了的心态，还买了算法导论。（提前声明，这种算法文章都是我自己刷算法的笔记体会，算法大神不要吐槽，当然欢迎指导）。不扯淡了，今天只做了三道算法题，都是Easy级别的（T_T），不过慢慢积累嘛，就说说这三道。 TwoSumhttps://leetcode.com/problems/two-sum/?t">
 
 
 
@@ -326,7 +325,7 @@ TwoSumhttps://leetcode.com/problems/two-sum/?t">
 
       
         <p>算法一直不咋地，决定要开始刷一刷算法，每天在LeetCode上做两三道，希望可以做到吧，本着买了就当看了的心态，还买了算法导论。（提前声明，这种算法文章都是我自己刷算法的笔记体会，算法大神不要吐槽，当然欢迎指导）。<br>不扯淡了，今天只做了三道算法题，都是Easy级别的（T_T），不过慢慢积累嘛，就说说这三道。</p>
-<h2 id="TwoSum"><a href="#TwoSum" class="headerlink" title="TwoSum"></a>TwoSum</h2><p><a href="https://leetcode.com/problems/two-sum/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/two-sum/?tab=Description</a></p>
+<h2 id="TwoSum"><a href="#TwoSum" class="headerlink" title="TwoSum"></a>TwoSum</h2><p><a href="https://leetcode.com/problems/two-sum/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/two-sum/?tab=Description</a></p>
 <p>题目就不说了，这个考的是HashMap的知识（Java中是HashMap，C++的话用Vector），都是利用他们的键值快速查找来解题。<br>这也是巧妙地一点，将值作为Key，索引作为Value，因为Key的查找是快速查找，HashMap中的containsKey(key)中又是利用getNode(hash,key)方法实现，内部实现是利用链表的顺序查找实现。<br>所以我提交的是</p>
 <pre><code>public class TwoSum {
 public static void main(String[] args){
@@ -359,7 +358,7 @@ public int[] twoSum(int []x,int target){
     return null;
 }
 </code></pre><p>}</p>
-<h2 id="HammingDistance"><a href="#HammingDistance" class="headerlink" title="HammingDistance"></a>HammingDistance</h2><p><a href="https://leetcode.com/problems/hamming-distance/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/hamming-distance/?tab=Description</a></p>
+<h2 id="HammingDistance"><a href="#HammingDistance" class="headerlink" title="HammingDistance"></a>HammingDistance</h2><p><a href="https://leetcode.com/problems/hamming-distance/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/hamming-distance/?tab=Description</a></p>
 <p>这道题很简单，我用的是位运算，将两个二进制数中的1通过异或放在同一个二进制数，在通过移位进行距离的计算。<br>Solution:</p>
 <pre><code>public class HammingDistance {
 public static void main(String[] args){
@@ -377,7 +376,7 @@ public  int hammingDistance(int x, int y){
     return dis;
 }
 </code></pre><p>}</p>
-<h2 id="NumberComplement"><a href="#NumberComplement" class="headerlink" title="NumberComplement"></a>NumberComplement</h2><p><a href="https://leetcode.com/problems/number-complement/?tab=Description" target="_blank" rel="external">https://leetcode.com/problems/number-complement/?tab=Description</a></p>
+<h2 id="NumberComplement"><a href="#NumberComplement" class="headerlink" title="NumberComplement"></a>NumberComplement</h2><p><a href="https://leetcode.com/problems/number-complement/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/number-complement/?tab=Description</a></p>
 <p>这道题也不难，不过我提交失败了好几次，主要是没有考虑周全。要求一个二进制中的0和1互换后的数，刚开始我还考虑了好几种情况，事实证明想多了，我的做法简单来说，因为不以0开头，所以相当于取一位数判断0,1，再进行移位。感觉说的有点不清楚，代码一看就明白</p>
 <pre><code>public class NumberComplement {
 public static void main(String[] args){
@@ -415,9 +414,9 @@ public int findComplement(int num){
       
         <div class="post-tags">
           
-            <a href="/tags/算法/" rel="tag">#算法</a>
-          
             <a href="/tags/LeetCode/" rel="tag">#LeetCode</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
           
         </div>
       
@@ -564,7 +563,7 @@ public int findComplement(int num){
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TwoSum"><span class="nav-number">1.</span> <span class="nav-text">TwoSum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HammingDistance"><span class="nav-number">2.</span> <span class="nav-text">HammingDistance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NumberComplement"><span class="nav-number">3.</span> <span class="nav-text">NumberComplement</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TwoSum"><span class="nav-number">1.</span> <span class="nav-text"><a href="#TwoSum" class="headerlink" title="TwoSum"></a>TwoSum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HammingDistance"><span class="nav-number">2.</span> <span class="nav-text"><a href="#HammingDistance" class="headerlink" title="HammingDistance"></a>HammingDistance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NumberComplement"><span class="nav-number">3.</span> <span class="nav-text"><a href="#NumberComplement" class="headerlink" title="NumberComplement"></a>NumberComplement</span></a></li></ol></div>
             
           </div>
         </section>
