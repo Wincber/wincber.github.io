@@ -16,13 +16,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[记我的树莓派三二事(一)]]></title>
-      <url>http://wincber.com/2017/12/07/%E8%AE%B0%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%89%E4%BA%8C%E4%BA%8B-%E4%B8%80/</url>
-      <content type="html"><![CDATA[<pre><code>之前一直是使用树莓派学习写python爬虫代码，总感觉有点大材小用的感觉，所以准备拿树莓派做些实际事，之前也有仿照
-</code></pre>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[记一集成环信所遇到Could not find Class ..&NoClassDefError错误（Android4.x机）]]></title>
       <url>http://wincber.com/2017/07/14/%E8%AE%B0%E4%B8%80%E9%9B%86%E6%88%90%E7%8E%AF%E4%BF%A1%E6%89%80%E9%81%87%E5%88%B0Could-not-find-Class-NoClassDefError%E9%94%99%E8%AF%AF/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  最近项目测试阶段，app在Android4.x上打开直接崩溃，我也很崩溃，看log日志，发现是因为环信部分的错误，鼓捣了好久才终于解决（但估计兼容问题后续肯定还有很多问题T_T）</p>
